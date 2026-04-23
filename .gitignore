@@ -1,0 +1,36 @@
+# Xcode
+#
+build/
+DerivedData/
+*.hmap
+*.ipa
+*.playground.xml
+/xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+*.xctest
+*.cache
+*.moved-aside
+*.xcuserstate
+*.xcworkspace
+!default.xcworkspace
+
+# Node / WYA-Cloud
+#
+node_modules/
+.wrangler/
+dist/
+.dev.vars
+.env
+
+# OS X
+#
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+
+# WYA Specific
+#
+WYA3.0/Services/Secrets.swift

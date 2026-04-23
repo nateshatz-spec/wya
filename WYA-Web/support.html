@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | WYA 3.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #0071e3;
+            --blue-light: #60a5fa;
+            --bg: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        nav {
+            padding-bottom: 4rem;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        .contact-box {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .email {
+            font-size: 1.5rem;
+            color: var(--blue-light);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .faq {
+            margin-top: 4rem;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+        }
+
+        .faq-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--blue-light);
+        }
+
+        .faq-item p {
+            opacity: 0.7;
+        }
+
+        .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.5;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">WYA 3.0</a>
+        </nav>
+
+        <h1>Support Center</h1>
+        
+        <div class="contact-box">
+            <h2>Need help with WYA 3.0?</h2>
+            <p>Our team is here to assist you with any technical issues or feedback.</p>
+            <a href="mailto:support@wya-wellness.com" class="email">support@wya-wellness.com</a>
+        </div>
+
+        <div class="faq">
+            <h1>Frequently Asked Questions</h1>
+            
+            <div class="faq-item">
+                <h3>How do I backup my data?</h3>
+                <p>Data is stored locally on your device by default. You can enable Cloud Sync in the Settings menu to securely backup your data to our servers.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Is my data shared with anyone?</h3>
+                <p>No. Your health data is private. It is only shared if you explicitly choose to export a report for your healthcare provider.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What is "Aura Intelligence"?</h3>
+                <p>Aura Intelligence is our proprietary engine that analyzes your mood logs and lifestyle factors to help you visualize emotional patterns.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 WYA Wellness. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>

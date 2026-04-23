@@ -1,0 +1,16 @@
+name = "wya-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[vars]
+ENVIRONMENT = "production"
+
+# D1 Database binding — after creating the DB, paste the real ID here
+[[d1_databases]]
+binding = "DB"
+database_name = "wya-user-data"
+database_id = "b7cd48c0-b578-41b8-a507-915f85a4e903"
+
+[[routes]]
+pattern = "api.whatsyouranxiety.com/*"
+custom_domain = true
