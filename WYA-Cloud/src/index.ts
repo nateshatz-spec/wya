@@ -34,10 +34,13 @@ async function sendWelcomeEmail(email: string, name: string, env: Env) {
 				</p>
 			</div>
 			<p style="font-size: 16px; line-height: 1.6; color: #94a3b8; margin-bottom: 30px;">
-				Our clinical therapy labs and aura intelligence are almost ready for you. We'll notify you the moment the download link is available.
+				Our clinical therapy labs and aura intelligence are ready for you. Click the button below to join the TestFlight beta and download the app immediately.
 			</p>
+			<div style="text-align: center; margin-bottom: 30px;">
+				<a href="https://testflight.apple.com/join/pPTtSX2v" style="background: #0071e3; color: white; padding: 16px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; box-shadow: 0 10px 20px rgba(0,113,227,0.3);">Download Beta on TestFlight</a>
+			</div>
 			<div style="text-align: center;">
-				<a href="https://whatsyouranxiety.com" style="background: #0071e3; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 700;">Visit Our Website</a>
+				<a href="https://whatsyouranxiety.com" style="color: #94a3b8; text-decoration: none; font-size: 14px;">Visit Our Website</a>
 			</div>
 			<p style="font-size: 12px; color: #475569; margin-top: 40px; text-align: center;">
 				&copy; 2026 What's Your Anxiety. All rights reserved.
@@ -46,7 +49,7 @@ async function sendWelcomeEmail(email: string, name: string, env: Env) {
 	`;
 
 	try {
-		await fetch("https://api.mailchannels.net/tx/v1/send", {
+		const response = await fetch("https://api.mailchannels.net/tx/v1/send", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -70,6 +73,13 @@ async function sendWelcomeEmail(email: string, name: string, env: Env) {
 				],
 			}),
 		});
+
+		if (!response.ok) {
+			const errorText = await response.text();
+			console.error("MailChannels Error:", response.status, errorText);
+		} else {
+			console.log("Welcome email sent successfully to:", email);
+		}
 	} catch (e) {
 		console.error("Failed to send welcome email:", e);
 	}
@@ -226,7 +236,7 @@ async function handlePutUserData(userId: string, request: Request, env: Env): Pr
 // ---------- router ----------
 
 export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 		if (request.method === "OPTIONS") {
 			return new Response(null, {
 				headers: {
@@ -244,7 +254,32 @@ export default {
 		if (path === "/api/v1/health") return jsonResponse({ status: "ok" });
 
 		// Auth
-		if (path === "/api/v1/auth/signup" && request.method === "POST") return handleSignUp(request, env);
+		if (path === "/api/v1/auth/signup" && request.method === "POST") {
+			const { email, password, name } = await request.json() as any;
+			if (!email || !password) return errorResponse("Email and password required.", 400);
+
+			const passwordHash = await hashPassword(password);
+			const userId = crypto.randomUUID();
+
+			try {
+				await env.DB.prepare(
+					"INSERT INTO users (id, email, password_hash, display_name) VALUES (?, ?, ?, ?)"
+				)
+					.bind(userId, email, passwordHash, name)
+					.run();
+				
+				const token = await generateToken(userId, env.JWT_SECRET);
+				
+				// Ensure the email is sent before the worker shuts down
+				ctx.waitUntil(sendWelcomeEmail(email, name, env));
+
+				return jsonResponse({ userId, token, name });
+			} catch (e: any) {
+				if (e.message.includes("UNIQUE")) return errorResponse("Email already in use.", 409);
+				return errorResponse("Signup failed.", 500);
+			}
+		}
+		
 		if (path === "/api/v1/auth/login" && request.method === "POST") return handleLogin(request, env);
 
 		// Authorized routes
