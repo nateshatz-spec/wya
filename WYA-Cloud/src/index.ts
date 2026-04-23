@@ -14,20 +14,17 @@ export interface Env {
 	DB: D1Database;
 	API_SECRET: string; // Master secret for admin tasks
 	JWT_SECRET: string; // Secret for signing user tokens
-	RESEND_API_KEY: string; // API key for sending emails
 }
 
 // ---------- helpers ----------
 
 async function sendWelcomeEmail(email: string, name: string, env: Env) {
-	if (!env.RESEND_API_KEY) return;
-
 	const html = `
-		<div style="font-family: 'Outfit', sans-serif; background-color: #0b0f19; color: #f8fafc; padding: 40px; border-radius: 20px; max-width: 600px; margin: 0 auto;">
+		<div style="font-family: sans-serif; background-color: #0b0f19; color: #f8fafc; padding: 40px; border-radius: 20px; max-width: 600px; margin: 0 auto;">
 			<div style="text-align: center; margin-bottom: 30px;">
 				<img src="https://whatsyouranxiety.com/logo.png" alt="WYA Logo" style="width: 80px; height: 80px;">
 			</div>
-			<h1 style="font-size: 24px; font-weight: 900; margin-bottom: 20px; text-align: center;">Welcome to the Beta, ${name}!</h1>
+			<h1 style="font-size: 24px; font-weight: 900; margin-bottom: 20px; text-align: center; color: white;">Welcome to the Beta, ${name}!</h1>
 			<p style="font-size: 16px; line-height: 1.6; color: #94a3b8; margin-bottom: 20px;">
 				We're so excited that you've decided to start your mental health journey with <strong>What's Your Anxiety</strong>. 
 			</p>
@@ -49,17 +46,28 @@ async function sendWelcomeEmail(email: string, name: string, env: Env) {
 	`;
 
 	try {
-		await fetch("https://api.resend.com/emails", {
+		await fetch("https://api.mailchannels.net/tx/v1/send", {
 			method: "POST",
 			headers: {
-				"Authorization": `Bearer ${env.RESEND_API_KEY}`,
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				from: "What's Your Anxiety <welcome@whatsyouranxiety.com>",
-				to: [email],
+				personalizations: [
+					{
+						to: [{ email: email, name: name }],
+					},
+				],
+				from: {
+					email: "welcome@whatsyouranxiety.com",
+					name: "What's Your Anxiety",
+				},
 				subject: "Welcome to the WYA 3.0 Beta!",
-				html: html,
+				content: [
+					{
+						type: "text/html",
+						value: html,
+					},
+				],
 			}),
 		});
 	} catch (e) {
