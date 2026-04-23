@@ -1,4 +1,5 @@
 # What's Your Anxiety — Your Mind, Unlocked
+[![Deployment Status](https://github.com/nateshatz-spec/wya/actions/workflows/deploy.yml/badge.svg)](https://github.com/nateshatz-spec/wya/actions)
 
 What's Your Anxiety is a premium mental health toolkit designed to bridge the gap between clinical therapy and daily wellness. It combines **Aura Intelligence** (advanced mood visualization) with evidence-based **Clinical Labs** to provide users with rapid relief and long-term emotional clarity.
 
