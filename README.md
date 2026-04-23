@@ -32,6 +32,7 @@ What's Your Anxiety is a premium mental health toolkit designed to bridge the ga
 
 - **Language**: Swift (SwiftUI), TypeScript (Workers).
 - **Backend**: Cloudflare Workers + D1 Database.
+- **Production API**: `https://api.whatsyouranxiety.com`
 - **Privacy**: End-to-end data encryption and Apple-compliant Privacy Manifests.
 
 ---
