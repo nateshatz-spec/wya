@@ -12,5 +12,5 @@ database_name = "wya-user-data"
 database_id = "b7cd48c0-b578-41b8-a507-915f85a4e903"
 
 [[routes]]
-pattern = "api.whatsyouranxiety.com/*"
+pattern = "api.whatsyouranxiety.com"
 custom_domain = true
