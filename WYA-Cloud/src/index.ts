@@ -14,9 +14,58 @@ export interface Env {
 	DB: D1Database;
 	API_SECRET: string; // Master secret for admin tasks
 	JWT_SECRET: string; // Secret for signing user tokens
+	RESEND_API_KEY: string; // API key for sending emails
 }
 
 // ---------- helpers ----------
+
+async function sendWelcomeEmail(email: string, name: string, env: Env) {
+	if (!env.RESEND_API_KEY) return;
+
+	const html = `
+		<div style="font-family: 'Outfit', sans-serif; background-color: #0b0f19; color: #f8fafc; padding: 40px; border-radius: 20px; max-width: 600px; margin: 0 auto;">
+			<div style="text-align: center; margin-bottom: 30px;">
+				<img src="https://whatsyouranxiety.com/logo.png" alt="WYA Logo" style="width: 80px; height: 80px;">
+			</div>
+			<h1 style="font-size: 24px; font-weight: 900; margin-bottom: 20px; text-align: center;">Welcome to the Beta, ${name}!</h1>
+			<p style="font-size: 16px; line-height: 1.6; color: #94a3b8; margin-bottom: 20px;">
+				We're so excited that you've decided to start your mental health journey with <strong>What's Your Anxiety</strong>. 
+			</p>
+			<div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px;">
+				<p style="margin: 0; font-size: 14px; color: #f8fafc;">
+					<strong>Important:</strong> Please keep this email safe. You will use the <strong>same email and password</strong> you just created to log in once the app officially drops on the App Store.
+				</p>
+			</div>
+			<p style="font-size: 16px; line-height: 1.6; color: #94a3b8; margin-bottom: 30px;">
+				Our clinical therapy labs and aura intelligence are almost ready for you. We'll notify you the moment the download link is available.
+			</p>
+			<div style="text-align: center;">
+				<a href="https://whatsyouranxiety.com" style="background: #0071e3; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 700;">Visit Our Website</a>
+			</div>
+			<p style="font-size: 12px; color: #475569; margin-top: 40px; text-align: center;">
+				&copy; 2026 What's Your Anxiety. All rights reserved.
+			</p>
+		</div>
+	`;
+
+	try {
+		await fetch("https://api.resend.com/emails", {
+			method: "POST",
+			headers: {
+				"Authorization": `Bearer ${env.RESEND_API_KEY}`,
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				from: "What's Your Anxiety <welcome@whatsyouranxiety.com>",
+				to: [email],
+				subject: "Welcome to the WYA 3.0 Beta!",
+				html: html,
+			}),
+		});
+	} catch (e) {
+		console.error("Failed to send welcome email:", e);
+	}
+}
 
 function jsonResponse(body: unknown, status = 200): Response {
 	return new Response(JSON.stringify(body), {
@@ -107,6 +156,10 @@ async function handleSignUp(request: Request, env: Env): Promise<Response> {
 			.run();
 		
 		const token = await generateToken(userId, env.JWT_SECRET);
+		
+		// Send welcome email asynchronously (don't block the response)
+		sendWelcomeEmail(email, name, env);
+
 		return jsonResponse({ userId, token, name });
 	} catch (e: any) {
 		if (e.message.includes("UNIQUE")) return errorResponse("Email already in use.", 409);
