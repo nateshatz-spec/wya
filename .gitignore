@@ -34,3 +34,7 @@ Icon
 # WYA Specific
 #
 WYA3.0/Services/Secrets.swift
+
+.dev.vars*
+!.dev.vars.example
+!.env.example
