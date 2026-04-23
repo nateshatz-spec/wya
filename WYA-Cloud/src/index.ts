@@ -14,71 +14,85 @@ export interface Env {
 	DB: D1Database;
 	API_SECRET: string; // Master secret for admin tasks
 	JWT_SECRET: string; // Secret for signing user tokens
+	RESEND_API_KEY: string; // API key for sending emails
 }
 
 // ---------- helpers ----------
 
 async function sendWelcomeEmail(email: string, name: string, env: Env) {
+	if (!env.RESEND_API_KEY) return;
+
 	const html = `
-		<div style="font-family: sans-serif; background-color: #0b0f19; color: #f8fafc; padding: 40px; border-radius: 20px; max-width: 600px; margin: 0 auto;">
-			<div style="text-align: center; margin-bottom: 30px;">
-				<img src="https://whatsyouranxiety.com/logo.png" alt="WYA Logo" style="width: 80px; height: 80px;">
-			</div>
-			<h1 style="font-size: 24px; font-weight: 900; margin-bottom: 20px; text-align: center; color: white;">Welcome to the Beta, ${name}!</h1>
-			<p style="font-size: 16px; line-height: 1.6; color: #94a3b8; margin-bottom: 20px;">
-				We're so excited that you've decided to start your mental health journey with <strong>What's Your Anxiety</strong>. 
-			</p>
-			<div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px;">
-				<p style="margin: 0; font-size: 14px; color: #f8fafc;">
-					<strong>Important:</strong> Please keep this email safe. You will use the <strong>same email and password</strong> you just created to log in once the app officially drops on the App Store.
+		<!DOCTYPE html>
+		<html>
+		<head>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<style>
+				@media only screen and (max-width: 600px) {
+					.container { padding: 20px !important; border-radius: 0 !important; }
+					.title { font-size: 28px !important; }
+					.button { width: 100% !important; box-sizing: border-box; }
+				}
+			</style>
+		</head>
+		<body style="margin: 0; padding: 0; background-color: #0b0f19;">
+			<div class="container" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0b0f19; color: #f8fafc; padding: 60px 40px; max-width: 600px; margin: 0 auto; border-radius: 30px;">
+				<div style="text-align: center; margin-bottom: 40px;">
+					<img src="https://whatsyouranxiety.com/logo.png" alt="WYA Logo" style="width: 100px; height: 100px;">
+				</div>
+				
+				<h1 class="title" style="font-size: 36px; font-weight: 900; margin-bottom: 24px; text-align: center; color: white; letter-spacing: -1px; line-height: 1.1;">Welcome to the Beta, ${name}!</h1>
+				
+				<p style="font-size: 18px; line-height: 1.6; color: #94a3b8; margin-bottom: 32px; text-align: center;">
+					We're so excited that you've decided to start your mental health journey with <strong>What's Your Anxiety</strong>. 
+				</p>
+				
+				<div style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 40px; text-align: center;">
+					<p style="margin: 0; font-size: 15px; color: #f8fafc; line-height: 1.5;">
+						<strong>Important:</strong> Please keep this email safe. You will use the <strong>same email and password</strong> you just created to log in once the app officially drops on the App Store.
+					</p>
+				</div>
+				
+				<p style="font-size: 18px; line-height: 1.6; color: #94a3b8; margin-bottom: 40px; text-align: center;">
+					Our clinical therapy labs and aura intelligence are ready for you. Click the button below to join the TestFlight beta and download the app immediately.
+				</p>
+				
+				<div style="text-align: center; margin-bottom: 50px;">
+					<a href="https://testflight.apple.com/join/pPTtSX2v" class="button" style="display: inline-block; background: #0071e3; color: white; padding: 20px 40px; border-radius: 16px; text-decoration: none; font-weight: 700; font-size: 20px; box-shadow: 0 15px 30px rgba(0,113,227,0.4);">Download Beta on TestFlight</a>
+				</div>
+				
+				<div style="text-align: center;">
+					<a href="https://whatsyouranxiety.com" style="color: #475569; text-decoration: none; font-size: 14px; font-weight: 600;">whatsyouranxiety.com</a>
+				</div>
+				
+				<p style="font-size: 12px; color: #334155; margin-top: 60px; text-align: center; letter-spacing: 1px; text-transform: uppercase;">
+					&copy; 2026 What's Your Anxiety. Built with ❤️ for your mind.
 				</p>
 			</div>
-			<p style="font-size: 16px; line-height: 1.6; color: #94a3b8; margin-bottom: 30px;">
-				Our clinical therapy labs and aura intelligence are ready for you. Click the button below to join the TestFlight beta and download the app immediately.
-			</p>
-			<div style="text-align: center; margin-bottom: 30px;">
-				<a href="https://testflight.apple.com/join/pPTtSX2v" style="background: #0071e3; color: white; padding: 16px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 18px; box-shadow: 0 10px 20px rgba(0,113,227,0.3);">Download Beta on TestFlight</a>
-			</div>
-			<div style="text-align: center;">
-				<a href="https://whatsyouranxiety.com" style="color: #94a3b8; text-decoration: none; font-size: 14px;">Visit Our Website</a>
-			</div>
-			<p style="font-size: 12px; color: #475569; margin-top: 40px; text-align: center;">
-				&copy; 2026 What's Your Anxiety. All rights reserved.
-			</p>
-		</div>
+		</body>
+		</html>
 	`;
 
 	try {
-		const response = await fetch("https://api.mailchannels.net/tx/v1/send", {
+		const response = await fetch("https://api.resend.com/emails", {
 			method: "POST",
 			headers: {
+				"Authorization": `Bearer ${env.RESEND_API_KEY}`,
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				personalizations: [
-					{
-						to: [{ email: email, name: name }],
-					},
-				],
-				from: {
-					email: "welcome@whatsyouranxiety.com",
-					name: "What's Your Anxiety",
-				},
+				from: "What's Your Anxiety <welcome@whatsyouranxiety.com>",
+				to: [email],
 				subject: "Welcome to the WYA 3.0 Beta!",
-				content: [
-					{
-						type: "text/html",
-						value: html,
-					},
-				],
+				html: html,
 			}),
 		});
 
-		if (!response.ok) {
-			const errorText = await response.text();
-			console.error("MailChannels Error:", response.status, errorText);
+		if (response.ok) {
+			console.log("Welcome email sent successfully via Resend to:", email);
 		} else {
-			console.log("Welcome email sent successfully to:", email);
+			const err = await response.text();
+			console.error("Resend Error:", response.status, err);
 		}
 	} catch (e) {
 		console.error("Failed to send welcome email:", e);
