@@ -56,15 +56,15 @@ struct MoreView: View {
                 NavigationLink("Medical Disclaimer") {
                     MedicalDisclaimerView()
                 }
-                Link("Privacy Policy", destination: URL(string: "https://whatsyouranxiety.com/privacy")!)
-                Link("Terms of Service", destination: URL(string: "https://whatsyouranxiety.com/terms")!)
+                Link("Privacy Policy", destination: URL(string: "https://whatsyouranxiety.com/privacy.html")!)
+                Link("Terms of Service", destination: URL(string: "https://whatsyouranxiety.com/terms.html")!)
                 NavigationLink("About WYA") {
                     VStack(spacing: 20) {
                         Image(systemName: "sparkles")
                             .font(.system(size: 60))
                             .foregroundColor(Theme.blue)
                         
-                        Text("WYA 3.0")
+                        Text("What's Your Anxiety")
                             .font(.system(size: 24, weight: .black))
                         
                         Text("Version \(Bundle.main.releaseVersionNumber ?? "3.0.0") (\(Bundle.main.buildVersionNumber ?? "1"))")
