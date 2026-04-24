@@ -7,12 +7,20 @@
     "deploy": "wrangler deploy",
     "db:create": "wrangler d1 create wya-user-data",
     "db:migrate": "wrangler d1 execute wya-user-data --file=./schema.sql",
-    "db:migrate:local": "wrangler d1 execute wya-user-data --local --file=./schema.sql"
+    "db:migrate:local": "wrangler d1 execute wya-user-data --local --file=./schema.sql",
+    "generate-ads": "tsx scripts/render_ads.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241230.0",
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5.7.0",
     "wrangler": "^4.84.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^16.4.0",
+    "playwright": "^1.42.0"
+  }
 }

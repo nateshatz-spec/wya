@@ -56,12 +56,12 @@ struct MoodEntry: Codable, Identifiable {
 
     var emoji: String {
         let emojis = ["😞", "😟", "😐", "🙂", "😄"]
-        return emojis[indices: mood - 1] ?? "😐"
+        return emojis[safe: mood - 1] ?? "😐"
     }
 
     var label: String {
         let labels = ["Terrible", "Bad", "Okay", "Good", "Amazing"]
-        return labels[indices: mood - 1] ?? "Okay"
+        return labels[safe: mood - 1] ?? "Okay"
     }
 }
 

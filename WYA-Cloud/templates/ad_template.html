@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clarity Ads Generator</title>
+    <style>
+        :root {
+            --accent: #0071e3;
+            --bg-overlay: rgba(0, 0, 0, 0.4);
+            --charcoal: #0a0c10;
+            --glow: rgba(0, 113, 227, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        .ad-canvas {
+            width: 1080px;
+            height: 1080px;
+            position: relative;
+            background-color: var(--charcoal);
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: white;
+        }
+
+        /* The Background Image from AI */
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6) saturate(1.2);
+            animation: cinematicZoom 20s linear infinite alternate;
+        }
+
+        @keyframes cinematicZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        /* Cinematic Gradient Overlays */
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%),
+                        linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.9) 100%);
+        }
+
+        /* Glowing Blue Accent for "Aura" feel */
+        .aura-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            bottom: -200px;
+            right: -200px;
+            filter: blur(80px);
+            z-index: 5;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 60px;
+            filter: drop-shadow(0 0 20px var(--accent));
+        }
+
+        .brand-name {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main-text {
+            max-width: 850px;
+        }
+
+        .headline {
+            font-size: 90px;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 25px;
+            letter-spacing: -4px;
+            text-wrap: balance;
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+        }
+        
+        .subheadline {
+            font-size: 36px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.4;
+            max-width: 700px;
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cta-button {
+            background-color: var(--accent);
+            padding: 28px 60px;
+            border-radius: 60px;
+            font-size: 26px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 20px 40px rgba(0, 113, 227, 0.3),
+                        0 0 0 1px rgba(255,255,255,0.1);
+        }
+
+        .url {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            opacity: 0.4;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ad-canvas" id="ad-output">
+        <img src="" class="bg-image" id="bg-target">
+        
+        <div class="gradient-overlay"></div>
+        <div class="aura-glow"></div>
+
+        <div class="content">
+            <div class="header">
+                <div class="logo">🦋</div>
+                <div class="brand-name">WYA 3.0</div>
+            </div>
+
+            <div class="main-text">
+                <h1 class="headline" id="headline-target">Loading...</h1>
+                <p class="subheadline" id="subheadline-target">Preparing your clarity experience.</p>
+            </div>
+
+            <div class="footer">
+                <div class="cta-container">
+                    <p class="url">wya3.com</p>
+                    <div class="cta-button" id="cta-target">Download</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Injection Logic
+        function updateAd() {
+            const params = new URLSearchParams(window.location.search);
+            
+            const headline = params.get('headline') || "Find Your Clarity.";
+            const subheadline = params.get('subheadline') || "Experience the cinematic side of mental wellness.";
+            const cta = params.get('cta') || "Download Beta";
+            const bgUrl = params.get('bg') || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1080&h=1080";
+
+            document.getElementById('headline-target').innerHTML = headline.replace(/\n/g, '<br>');
+            document.getElementById('subheadline-target').innerText = subheadline;
+            document.getElementById('cta-target').innerText = cta;
+            document.getElementById('bg-target').src = bgUrl;
+        }
+
+        updateAd();
+    </script>
+</body>
+</html>

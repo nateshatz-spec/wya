@@ -91,6 +91,7 @@ class DataStore: ObservableObject {
     @Published var hapticsEnabled: Bool = true
     @Published var dynamicAuraEnabled: Bool = true
     @Published var showAuraPicker: Bool = false
+    @Published var hasSeenDisclaimer: Bool = false
     @Published var hasCompletedOnboarding: Bool = false
     @Published var totalSessionsCompleted: Int = 0
     @Published var lastReviewRequestVersion: String = ""
@@ -203,6 +204,7 @@ class DataStore: ObservableObject {
         hapticsEnabled = defaults.bool(forKey: prefix + "haptics_enabled")
         dynamicAuraEnabled = defaults.bool(forKey: prefix + "dynamic_aura_enabled")
         isPremium = defaults.bool(forKey: prefix + "is_premium")
+        hasSeenDisclaimer = defaults.bool(forKey: prefix + "has_seen_disclaimer")
         hasCompletedOnboarding = defaults.bool(forKey: prefix + "has_completed_onboarding")
         lastSeenRank = defaults.string(forKey: prefix + "last_seen_rank") ?? ""
         level = defaults.integer(forKey: prefix + "persisted_level")
@@ -253,6 +255,7 @@ class DataStore: ObservableObject {
         defaults.set(hapticsEnabled, forKey: prefix + "haptics_enabled")
         defaults.set(dynamicAuraEnabled, forKey: prefix + "dynamic_aura_enabled")
         defaults.set(isPremium, forKey: prefix + "is_premium")
+        defaults.set(hasSeenDisclaimer, forKey: prefix + "has_seen_disclaimer")
         defaults.set(hasCompletedOnboarding, forKey: prefix + "has_completed_onboarding")
         defaults.set(lastSeenRank, forKey: prefix + "last_seen_rank")
         defaults.set(level, forKey: prefix + "persisted_level")

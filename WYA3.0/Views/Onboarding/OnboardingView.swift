@@ -88,8 +88,10 @@ struct OnboardingView: View {
             Text(errorMessage ?? "")
         }
         .onAppear {
-            if !store.hasCompletedOnboarding {
+            if !store.hasSeenDisclaimer {
                 showingDisclaimer = true
+                store.hasSeenDisclaimer = true
+                store.saveAll()
             }
         }
     }
@@ -155,33 +157,60 @@ struct OnboardingView: View {
     }
     
     private func nextStep() {
-        if currentStep < totalSteps - 1 {
-            withAnimation {
+        if currentStep == 5 { // This is the Auth Step
+            performSignUp()
+        } else if currentStep < totalSteps - 1 {
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
                 currentStep += 1
             }
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         } else {
-            finishOnboarding()
+            // Final completion
+            store.hasCompletedOnboarding = true
+            store.saveAll()
+            
+            // Sync with AuthManager to trigger the view switch
+            withAnimation(.spring()) {
+                auth.hasCompletedOnboarding = true
+            }
         }
     }
     
     private func finishOnboarding() {
+        // Fallback for the "Skip" button
+        store.hasCompletedOnboarding = true
+        store.saveAll()
+        
+        withAnimation(.spring()) {
+            auth.hasCompletedOnboarding = true
+        }
+    }
+    
+    private func performSignUp() {
+        guard !email.isEmpty && password.count >= 6 else { return }
+        
         isSigningUp = true
+        errorMessage = nil
         
         auth.signUp(name: name, email: email, password: password) { error in
             isSigningUp = false
             
             if let error = error {
                 errorMessage = error.localizedDescription
+                UINotificationFeedbackGenerator().notificationOccurred(.error)
                 return
             }
             
-            // On success, save local state
+            // Success! Proceed to Celebration
+            withAnimation(.spring(response: 0.8, dampingFraction: 0.7)) {
+                currentStep += 1 // Go to Aura Intro
+            }
+            
+            // Save local metadata
             store.userName = name
             store.userGender = gender
             store.wellnessGoals = Array(selectedGoals)
             store.mentalConditions = Array(selectedConditions)
-            store.hasCompletedOnboarding = true
             store.saveAll()
             
             UINotificationFeedbackGenerator().notificationOccurred(.success)
@@ -193,46 +222,72 @@ struct OnboardingView: View {
 
 struct WelcomeStepView: View {
     var onSignInTap: () -> Void
+    @State private var showLogo = false
     
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 32) {
             Spacer()
             
-            ZStack {
-                Circle()
-                    .fill(Theme.blue.opacity(0.1))
-                    .frame(width: 120, height: 120)
-                Image(systemName: "sparkles")
-                    .font(.system(size: 60))
-                    .foregroundColor(Theme.blue)
-            }
-            
-            VStack(spacing: 12) {
-                Text("WELCOME TO WYA")
-                    .font(.system(size: 12, weight: .black))
-                    .kerning(2)
-                    .foregroundColor(Theme.blue)
+            VStack(spacing: 40) {
+                ZStack {
+                    // Animated glow behind logo
+                    Circle()
+                        .fill(Theme.blue.opacity(0.1))
+                        .frame(width: 160, height: 160)
+                        .blur(radius: 40)
+                        .scaleEffect(showLogo ? 1.2 : 0.8)
+                    
+                    Image("logo") // Using the actual logo asset
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 140, height: 140)
+                        .scaleEffect(showLogo ? 1.0 : 0.5)
+                        .opacity(showLogo ? 1.0 : 0)
+                }
                 
-                Text("Find Your Clarity.")
-                    .font(.system(size: 34, weight: .black))
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Theme.nearBlack)
-                
-                Text("A cinematic experience for your mental wellness. Track, analyze, and master your anxiety with AI-powered insights.")
-                    .font(.system(size: 16, weight: .medium))
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Theme.darkGrey)
-                    .padding(.horizontal, 40)
+                VStack(spacing: 16) {
+                    Text("WELCOME TO WYA 3.0")
+                        .font(.system(size: 14, weight: .black))
+                        .kerning(4)
+                        .foregroundColor(Theme.blue)
+                        .opacity(showLogo ? 1 : 0)
+                        .offset(y: showLogo ? 0 : 20)
+                    
+                    Text("Find Your Clarity.")
+                        .font(.system(size: 40, weight: .black))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Theme.nearBlack)
+                        .opacity(showLogo ? 1 : 0)
+                        .offset(y: showLogo ? 0 : 20)
+                    
+                    Text("A cinematic experience for your mental wellness. Master your anxiety with AI-powered insights.")
+                        .font(.system(size: 17, weight: .medium))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Theme.darkGrey)
+                        .padding(.horizontal, 40)
+                        .opacity(showLogo ? 0.8 : 0)
+                        .offset(y: showLogo ? 0 : 20)
+                }
             }
-            
-            Button("Already have an account? Sign In") {
-                onSignInTap()
-            }
-            .font(.system(size: 14, weight: .bold))
-            .foregroundColor(Theme.blue)
-            .padding(.top, 10)
             
             Spacer()
+            
+            Button(action: onSignInTap) {
+                HStack {
+                    Text("Already a member?")
+                        .foregroundColor(Theme.midGrey)
+                    Text("Sign In")
+                        .foregroundColor(Theme.blue)
+                        .fontWeight(.bold)
+                }
+                .font(.system(size: 15))
+            }
+            .opacity(showLogo ? 1 : 0)
+        }
+        .onAppear {
+            withAnimation(.spring(response: 0.8, dampingFraction: 0.7).delay(0.3)) {
+                showLogo = true
+            }
         }
     }
 }
@@ -612,49 +667,72 @@ struct AuthStepView: View {
     
     var body: some View {
         VStack(spacing: 32) {
-            VStack(spacing: 8) {
-                Text("ACCOUNT")
+            VStack(spacing: 12) {
+                Text("SECURITY")
                     .font(.system(size: 12, weight: .black))
                     .kerning(2)
                     .foregroundColor(Theme.blue)
                 
-                Text("Create your cloud\nprofile.")
-                    .font(.system(size: 28, weight: .black))
+                Text("Secure Your Cloud.")
+                    .font(.system(size: 32, weight: .black))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Theme.nearBlack)
+                
+                Text("Create an account to sync your aura and therapy tools across all your devices.")
+                    .font(.system(size: 15, weight: .medium))
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(Theme.darkGrey)
+                    .padding(.horizontal, 40)
             }
             .padding(.top, 40)
             
-            VStack(spacing: 20) {
+            VStack(spacing: 24) {
+                // Email Field
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("EMAIL")
-                        .font(.system(size: 11, weight: .black))
-                        .foregroundColor(Theme.midGrey)
+                    HStack {
+                        Image(systemName: "envelope.fill")
+                            .foregroundColor(Theme.blue)
+                        Text("EMAIL ADDRESS")
+                            .font(.system(size: 11, weight: .black))
+                            .foregroundColor(Theme.midGrey)
+                    }
+                    
                     TextField("your@email.com", text: $email)
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-                        .padding(18)
+                        .padding(20)
                         .background(Theme.cardBg)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                        .auraStroke(color: email.contains("@") ? Theme.blue.opacity(0.3) : Theme.blue.opacity(0.1))
                 }
                 
+                // Password Field
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("PASSWORD")
-                        .font(.system(size: 11, weight: .black))
-                        .foregroundColor(Theme.midGrey)
+                    HStack {
+                        Image(systemName: "lock.shield.fill")
+                            .foregroundColor(Theme.blue)
+                        Text("PASSWORD")
+                            .font(.system(size: 11, weight: .black))
+                            .foregroundColor(Theme.midGrey)
+                    }
+                    
                     SecureField("At least 6 characters", text: $password)
-                        .padding(18)
+                        .padding(20)
                         .background(Theme.cardBg)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                        .auraStroke(color: password.count >= 6 ? Theme.blue.opacity(0.3) : Theme.blue.opacity(0.1))
                 }
             }
             .padding(.horizontal, 30)
             
-            Text("Your data is encrypted and synced to Cloudflare for multi-device access.")
-                .font(.system(size: 12, weight: .medium))
-                .multilineTextAlignment(.center)
-                .foregroundColor(Theme.midGrey)
-                .padding(.horizontal, 40)
+            HStack(spacing: 8) {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(.green)
+                Text("End-to-end encrypted sync")
+                    .font(.system(size: 13, weight: .bold))
+                    .foregroundColor(Theme.darkGrey)
+            }
+            .padding(.top, 10)
             
             Spacer()
         }

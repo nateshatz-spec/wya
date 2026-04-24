@@ -204,20 +204,21 @@ struct ProfileView: View {
     private var focusAreasSection: some View {
         Group {
             if !store.mentalConditions.isEmpty {
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: 12) {
                     sectionLabel(icon: "target", text: String(localized: "FOCUS AREAS"))
                     
-                    FlowLayout(spacing: 8) {
+                    FlowLayout(spacing: 10) {
                         ForEach(store.mentalConditions, id: \.self) { condition in
                             Text(condition)
-                                .font(.system(size: 10, weight: .black))
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 6)
+                                .font(.system(size: 11, weight: .black))
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 8)
                                 .background(Theme.blue.opacity(0.1))
                                 .foregroundColor(Theme.blue)
                                 .clipShape(Capsule())
                         }
                     }
+                    .padding(.horizontal, 4)
                 }
             }
         }

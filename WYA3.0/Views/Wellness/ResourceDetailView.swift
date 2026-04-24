@@ -49,22 +49,32 @@ struct ResourceDetailView: View {
                     Text(resource.body)
                         .font(.system(size: 17))
                         .lineSpacing(8)
-                        .foregroundColor(Theme.nearBlack)
+                        .foregroundColor(Theme.white.opacity(0.9)) // Better contrast on dark bg
                         .multilineTextAlignment(.leading)
                     
                     Divider()
+                        .background(Theme.white.opacity(0.1))
                         .padding(.vertical, 10)
                     
                     // Action Footer
                     VStack(alignment: .leading, spacing: 16) {
                         Text("TRY THIS NEXT")
                             .font(.system(size: 11, weight: .black))
-                            .foregroundColor(Theme.midGrey)
+                            .foregroundColor(Theme.blue) // Make it more visible
                         
                         HStack(spacing: 12) {
-                            actionButton(title: "Share", icon: "square.and.arrow.up")
-                            actionButton(title: "Favorite", icon: "heart")
-                            actionButton(title: "Mark Read", icon: "checkmark.circle.fill")
+                            actionButton(title: "Share", icon: "square.and.arrow.up") {
+                                // Action for Share
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            }
+                            actionButton(title: "Favorite", icon: "heart") {
+                                // Action for Favorite
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            }
+                            actionButton(title: "Mark Read", icon: "checkmark.circle.fill") {
+                                // Action for Mark Read
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                            }
                         }
                     }
                 }
@@ -72,22 +82,25 @@ struct ResourceDetailView: View {
                 .padding(.bottom, 40)
             }
         }
-        .background(Theme.offWhite)
+        .background(Theme.background) // Use dark background
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func actionButton(title: String, icon: String) -> some View {
-        VStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.system(size: 20))
-                .foregroundColor(Theme.blue)
-                .frame(width: 50, height: 50)
-                .background(Theme.blue.opacity(0.1))
-                .clipShape(Circle())
-            Text(title)
-                .font(.system(size: 11, weight: .bold))
-                .foregroundColor(Theme.midGrey)
+    private func actionButton(title: String, icon: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            VStack(spacing: 8) {
+                Image(systemName: icon)
+                    .font(.system(size: 20))
+                    .foregroundColor(Theme.blue)
+                    .frame(width: 50, height: 50)
+                    .background(Theme.blue.opacity(0.1))
+                    .clipShape(Circle())
+                Text(title)
+                    .font(.system(size: 11, weight: .bold))
+                    .foregroundColor(Theme.white.opacity(0.6))
+            }
+            .frame(maxWidth: .infinity)
         }
-        .frame(maxWidth: .infinity)
+        .buttonStyle(.plain)
     }
 }

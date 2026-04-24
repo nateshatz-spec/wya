@@ -1,0 +1,12 @@
+
+ ⛅️ wrangler 4.84.1
+───────────────────
+✅ Successfully created DB 'wya-prod-db' in region ENAM
+Created your new D1 database.
+
+To access your new D1 Database in your Worker, add the following snippet to your configuration file:
+[[d1_databases]]
+binding = "wya_prod_db"
+database_name = "wya-prod-db"
+database_id = "9bfd28a3-0a49-406b-af49-67b3b37788fa"
+

@@ -11,17 +11,17 @@ struct HopeBoxView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Theme.offWhite.ignoresSafeArea()
+                Theme.background.ignoresSafeArea() // Use deep background
                 
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 24) {
-                        VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 32) {
+                        VStack(alignment: .leading, spacing: 10) {
                             Text("Safe Space")
-                                .font(.system(size: 32, weight: .black))
-                                .foregroundColor(Theme.nearBlack)
+                                .font(.system(size: 36, weight: .black))
+                                .foregroundColor(.white)
                             Text("A collection of moments that bring you back to center.")
-                                .font(.system(size: 15))
-                                .foregroundColor(Theme.midGrey)
+                                .font(.system(size: 16, weight: .medium))
+                                .foregroundColor(.white.opacity(0.6))
                         }
                         .padding(.horizontal, 24)
                         .padding(.top, 20)

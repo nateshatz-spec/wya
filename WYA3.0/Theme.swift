@@ -3,24 +3,27 @@ import SwiftUI
 // MARK: - Design System
 struct Theme {
 
-    // MARK: Adaptive backgrounds
-    /// Main page/screen background
-    static let offWhite    = Color(UIColor.wya("f5f5f7", dark: "1c1c1e"))
-    /// Card / elevated surface
-    static let cardBg      = Color(UIColor.wya("ffffff", dark: "2c2c2e"))
-    /// Input field (TextEditor, TextField rows)
-    static let inputBg     = Color(UIColor.wya("f0f0f5", dark: "3a3a3c"))
+    // MARK: Premium Dark Palette
+    /// Main page/screen background (Deep Charcoal)
+    static let background  = Color(hex: "0F1419")
+    static let offWhite    = Color(hex: "0F1419") // Defaulting all screens to dark
+    
+    /// Card / elevated surface (Lighter Charcoal)
+    static let cardBg      = Color(hex: "1A1F24")
+    
+    /// Input field
+    static let inputBg     = Color(hex: "24292F")
 
-    // MARK: Adaptive text
-    static let nearBlack   = Color(UIColor.wya("1d1d1f", dark: "f5f5f7"))
-    static let midGrey     = Color(UIColor.wya("86868b", dark: "8e8e93"))
-    static let darkGrey    = Color(UIColor.wya("6e6e73", dark: "636366"))
-    static let lightGrey   = Color(UIColor.wya("e8e8ed", dark: "38383a"))
+    // MARK: Adaptive text (Optimized for dark)
+    static let nearBlack   = Color.white
+    static let midGrey     = Color(hex: "94A3B8")
+    static let darkGrey    = Color(hex: "64748B")
+    static let lightGrey   = Color(hex: "1E293B")
 
     // MARK: Adaptive accent tints
-    static let blueSubtle  = Color(UIColor.wya("e8f0fe", dark: "0a2540"))
+    static let blueSubtle  = Color(hex: "0071E3").opacity(0.1)
 
-    // MARK: Static accent colors (vibrant in both modes)
+    // MARK: Static accent colors
     static let white          = Color.white
     static let blue           = Color(hex: "0071e3")
     static let blueLight      = Color(hex: "2997ff")
@@ -34,12 +37,12 @@ struct Theme {
     // MARK: Radii
     static let radiusSm: CGFloat = 8
     static let radiusMd: CGFloat = 12
-    static let radiusLg: CGFloat = 18
-    static let radiusXl: CGFloat = 24
+    static let radiusLg: CGFloat = 20
+    static let radiusXl: CGFloat = 28 // More organic corners
 
     // MARK: Layout Spacing
     static let mainPadding: CGFloat = 20
-    static let mainSpacing: CGFloat = 24
+    static let mainSpacing: CGFloat = 32 // More "breathable" cinematic spacing
 
     // MARK: Medication pill colors
     static let pillColors: [Color] = [
@@ -59,74 +62,52 @@ struct AuraPalette: Identifiable {
     let gradient: [Color]
     let minLevel: Int
     
-    /// Standardized outline color for cards and secondary strokes
     var outline: Color {
-        switch id {
-        case "sunlight": return primary.opacity(0.2)
-        case "midnight": return primary.opacity(0.25)
-        default: return primary.opacity(0.15)
-        }
+        return primary.opacity(0.2)
     }
     
     static let allPalettes: [String: AuraPalette] = [
         "ice": AuraPalette(
             id: "ice", name: "Ice Blue",
             primary: Color(hex: "0071e3"), secondary: Color(hex: "2997ff"),
-            gradient: [Color(hex: "0071e3").opacity(0.15), Color(hex: "2997ff").opacity(0.05), Color.white],
+            gradient: [Color(hex: "0F1419"), Color(hex: "0F1419")], // Dark base
             minLevel: 1
         ),
         "forest": AuraPalette(
             id: "forest", name: "Deep Forest",
             primary: Color(hex: "059669"), secondary: Color(hex: "10b981"),
-            gradient: [Color(hex: "059669").opacity(0.15), Color(hex: "10b981").opacity(0.05), Color.white],
+            gradient: [Color(hex: "0F1419"), Color(hex: "0F1419")],
             minLevel: 1
         ),
         "storm": AuraPalette(
             id: "storm", name: "Quiet Storm",
             primary: Color(hex: "ef4444"), secondary: Color(hex: "f97316"),
-            gradient: [Color(hex: "ef4444").opacity(0.15), Color(hex: "f97316").opacity(0.05), Color.white],
+            gradient: [Color(hex: "0F1419"), Color(hex: "0F1419")],
             minLevel: 1
         ),
         "sunlight": AuraPalette(
             id: "sunlight", name: "Radiant Sunlight",
             primary: Color(hex: "f59e0b"), secondary: Color(hex: "fbbf24"),
-            gradient: [Color(hex: "f59e0b").opacity(0.15), Color(hex: "fbbf24").opacity(0.05), Color.white],
+            gradient: [Color(hex: "0F1419"), Color(hex: "0F1419")],
             minLevel: 1
         ),
         "midnight": AuraPalette(
             id: "midnight", name: "Starlit Midnight",
             primary: Color(hex: "6366f1"), secondary: Color(hex: "8b5cf6"),
-            gradient: [Color(hex: "0f172a"), Color(hex: "1e293b")],
+            gradient: [Color(hex: "0F1419"), Color(hex: "0F1419")],
             minLevel: 20
         )
     ]
 
-    /// Safely retrieves a palette by ID, falling back to 'ice' if not found.
     static func fromID(_ id: String) -> AuraPalette {
-        if let palette = allPalettes[id] {
-            return palette
-        }
-        return allPalettes["ice"] ?? AuraPalette(
-            id: "ice", name: "Ice Blue",
-            primary: Color(hex: "0071e3"), secondary: Color(hex: "2997ff"),
-            gradient: [Color(hex: "e8f0fe"), Color(hex: "ffffff")],
-            minLevel: 1
-        )
+        allPalettes[id] ?? allPalettes["ice"]!
     }
 }
 
-extension Collection {
-    /// Safe array access
-    subscript(indices index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
-    }
-}
-
-// MARK: - UIColor adaptive helper
+// MARK: - UIColor adaptive helper (Force Dark)
 extension UIColor {
-    /// Creates a UIColor that automatically switches between light/dark hex values.
     static func wya(_ light: String, dark: String) -> UIColor {
-        UIColor { $0.userInterfaceStyle == .dark ? UIColor(hex: dark) : UIColor(hex: light) }
+        UIColor(hex: dark) // Always return dark for the cinematic look
     }
 
     convenience init(hex: String) {
@@ -140,7 +121,14 @@ extension UIColor {
     }
 }
 
-// MARK: -xlor hex extension (for SwiftUI Color)
+extension Collection {
+    /// Safe array access to prevent index-out-of-bounds crashes
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+
+// MARK: - SwiftUI Hex Extension
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -148,9 +136,14 @@ extension Color {
         Scanner(string: hex).scanHexInt64(&int)
         let a, r, g, b: UInt64
         switch hex.count {
-        case 6:  (a, r, g, b) = (255, (int >> 16) & 0xFF, (int >> 8) & 0xFF, int & 0xFF)
-        case 8:  (a, r, g, b) = ((int >> 24) & 0xFF, (int >> 16) & 0xFF, (int >> 8) & 0xFF, int & 0xFF)
-        default: (a, r, g, b) = (255, 0, 0, 0)
+        case 3: // RGB (12-bit)
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6: // RGB (24-bit)
+            (a, r, g, b) = (255, (int >> 16) & 0xFF, (int >> 8) & 0xFF, int & 0xFF)
+        case 8: // ARGB (32-bit)
+            (a, r, g, b) = ((int >> 24) & 0xFF, (int >> 16) & 0xFF, (int >> 8) & 0xFF, int & 0xFF)
+        default:
+            (a, r, g, b) = (255, 0, 0, 0)
         }
         self.init(.sRGB,
                   red:   Double(r) / 255,
@@ -162,13 +155,12 @@ extension Color {
 
 // MARK: - Card Style
 struct CardStyle: ViewModifier {
-    @Environment(\.colorScheme) var scheme
     func body(content: Content) -> some View {
         content
             .padding(20)
             .background(Theme.cardBg)
             .clipShape(RoundedRectangle(cornerRadius: Theme.radiusXl, style: .continuous))
-            .shadow(color: .black.opacity(scheme == .dark ? 0 : 0.06), radius: 16, x: 0, y: 6)
+            .shadow(color: .black.opacity(0.4), radius: 20, x: 0, y: 10)
     }
 }
 
@@ -181,7 +173,7 @@ struct AuraStroke: ViewModifier {
         content
             .overlay(
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .stroke(color, lineWidth: 0.6) // Slightly thicker than before for "premium" feel
+                    .stroke(color.opacity(0.2), lineWidth: 1.0)
             )
     }
 }
@@ -198,10 +190,6 @@ extension View {
         AuraBackgroundContainer(palette: palette) { self }
     }
 
-    func dismissKeyboardOnReturn() -> some View {
-        self.onSubmit(of: .text) { hideKeyboard() }
-    }
-
     func hideKeyboard() {
         UIApplication.shared.sendAction(
             #selector(UIResponder.resignFirstResponder),
@@ -215,44 +203,42 @@ struct AuraBackgroundContainer<Content: View>: View {
     let palette: AuraPalette
     let content: () -> Content
     
-    @State private var pulseOpacity: Double = 0.5
+    @State private var pulseOpacity: Double = 0.4
     
     var body: some View {
         ZStack {
-            // 1. Primary Gradient Background
-            LinearGradient(colors: palette.gradient, startPoint: .topLeading, endPoint: .bottomTrailing)
-                .ignoresSafeArea()
+            // 1. Hard Dark Background
+            Theme.background.ignoresSafeArea()
             
-            // 2. Subtle Ambient Light (Orb)
+            // 2. Subtle Ambient Glow
             Circle()
-                .fill(palette.primary.opacity(0.12))
-                .blur(radius: 100)
-                .offset(x: -150, y: -200)
+                .fill(palette.primary.opacity(0.08))
+                .blur(radius: 120)
+                .offset(x: -100, y: -200)
             
             // 3. The Main Content
             content()
             
             // 4. THE GLOWING MOOD RING
-            // This ring wraps around the entire screen frame
-            RoundedRectangle(cornerRadius: 40, style: .continuous)
+            RoundedRectangle(cornerRadius: 44, style: .continuous)
                 .stroke(
                     LinearGradient(
-                        colors: [palette.primary, palette.secondary.opacity(0.5), palette.primary.opacity(0.8)],
+                        colors: [palette.primary, palette.secondary.opacity(0.3), palette.primary.opacity(0.6)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),
-                    lineWidth: 8
+                    lineWidth: 6
                 )
-                .blur(radius: 12)
+                .blur(radius: 10)
                 .opacity(pulseOpacity)
-                .padding(2)
+                .padding(4)
                 .ignoresSafeArea()
                 .allowsHitTesting(false)
         }
         .animation(.easeInOut(duration: 0.8), value: palette.id)
         .onAppear {
             withAnimation(.easeInOut(duration: 4.0).repeatForever(autoreverses: true)) {
-                pulseOpacity = 0.8
+                pulseOpacity = 0.6
             }
         }
     }

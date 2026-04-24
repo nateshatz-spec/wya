@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WYA 3.0 - Find Your Clarity</title>
+    <style>
+        :root {
+            --bg: #05070a;
+            --blue: #0071e3;
+            --purple: #8e2de2;
+            --cyan: #4facfe;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* The Aura Container */
+        .aura-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .aura {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--blue), var(--purple), var(--cyan));
+            filter: blur(60px);
+            opacity: 0.8;
+            animation: 
+                glow 4s infinite alternate,
+                rotate 10s linear infinite,
+                colorShift 8s infinite linear;
+        }
+
+        @keyframes glow {
+            from { transform: scale(1); filter: blur(60px); opacity: 0.6; }
+            to { transform: scale(1.4); filter: blur(80px); opacity: 0.9; }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes colorShift {
+            0% { filter: hue-rotate(0deg) blur(60px); }
+            100% { filter: hue-rotate(360deg) blur(60px); }
+        }
+
+        /* The Explosion Particles */
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        /* The Final Reveal */
+        .reveal {
+            position: absolute;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8);
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.4));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-top: 10px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Cinematic Sequence Classes */
+        .aura.explode {
+            animation: explodeOut 0.5s forwards ease-in;
+        }
+
+        @keyframes explodeOut {
+            0% { transform: scale(1.4); opacity: 0.9; }
+            100% { transform: scale(10); opacity: 0; filter: blur(200px); }
+        }
+
+        .reveal.show {
+            animation: finalReveal 1.5s forwards cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes finalReveal {
+            0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Replay Button */
+        #replay {
+            position: fixed;
+            bottom: 30px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+
+        #replay:hover { opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <div class="aura-container">
+        <div id="aura" class="aura"></div>
+        
+        <div id="reveal" class="reveal">
+            <div class="logo">🦋</div>
+            <div class="title">Find Your Clarity</div>
+            <div class="subtitle">WYA 3.0</div>
+        </div>
+    </div>
+
+    <button id="replay">Replay Ad</button>
+
+    <script>
+        const aura = document.getElementById('aura');
+        const reveal = document.getElementById('reveal');
+        const container = document.querySelector('.aura-container');
+
+        function createExplosion() {
+            for (let i = 0; i < 50; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                const size = Math.random() * 4 + 2;
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+                
+                // Random explosion direction
+                const angle = Math.random() * Math.PI * 2;
+                const dist = Math.random() * 300 + 50;
+                const tx = Math.cos(angle) * dist;
+                const ty = Math.sin(angle) * dist;
+
+                container.appendChild(p);
+
+                p.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                    { transform: `translate(${tx}px, ${ty}px) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 1000 + Math.random() * 500,
+                    easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                    fill: 'forwards'
+                });
+
+                setTimeout(() => p.remove(), 2000);
+            }
+        }
+
+        function runAd() {
+            // Reset
+            aura.classList.remove('explode');
+            reveal.classList.remove('show');
+            aura.style.opacity = 0.8;
+
+            // Step 1: Glow and shift (automatic via CSS)
+            
+            // Step 2: Explode after 4 seconds
+            setTimeout(() => {
+                aura.classList.add('explode');
+                createExplosion();
+                
+                // Step 3: Show app reveal
+                setTimeout(() => {
+                    reveal.classList.add('show');
+                }, 400);
+
+            }, 4000);
+        }
+
+        document.getElementById('replay').addEventListener('click', () => {
+            location.reload();
+        });
+
+        // Start on load
+        window.onload = runAd;
+    </script>
+</body>
+</html>

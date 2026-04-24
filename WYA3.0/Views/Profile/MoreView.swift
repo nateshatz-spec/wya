@@ -8,6 +8,31 @@ struct MoreView: View {
     
     var body: some View {
         List {
+            Section {
+                VStack(spacing: 16) {
+                    ZStack {
+                        Circle()
+                            .fill(Theme.blue.opacity(0.1))
+                            .frame(width: 80, height: 80)
+                        Image(systemName: "person.fill")
+                            .font(.system(size: 32))
+                            .foregroundColor(Theme.blue)
+                    }
+                    
+                    VStack(spacing: 4) {
+                        Text(store.userName)
+                            .font(.system(size: 20, weight: .black))
+                            .foregroundColor(.white)
+                        Text(store.userEmail)
+                            .font(.system(size: 14))
+                            .foregroundColor(Theme.midGrey)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 10)
+            }
+            .listRowBackground(Color.clear)
+
             Section("Cloud Synchronization") {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
@@ -33,19 +58,6 @@ struct MoreView: View {
             }
             
             Section("Account") {
-                HStack {
-                    Text("Name")
-                    Spacer()
-                    Text(store.userName)
-                        .foregroundColor(.secondary)
-                }
-                HStack {
-                    Text("Email")
-                    Spacer()
-                    Text(store.userEmail)
-                        .foregroundColor(.secondary)
-                }
-            }
                 Toggle("Haptic Feedback", isOn: $store.hapticsEnabled)
                 NavigationLink("Notification Settings") {
                     Text("Notifications")
