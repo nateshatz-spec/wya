@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AnalyticsView: View {
     @EnvironmentObject var store: DataStore
+    @EnvironmentObject var tabStore: TabStore
     @State private var showingExport = false
     
     var body: some View {
@@ -116,8 +117,10 @@ struct AnalyticsView: View {
             }
             
             Button(action: {
-                // Navigate to Wellness tab to log mood
-                // Note: In a real app we'd trigger the log sheet or switch tabs
+                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                withAnimation {
+                    tabStore.selectedTab = .wellness
+                }
             }) {
                 Text("Start Your First Log")
                     .font(.system(size: 15, weight: .black))

@@ -95,6 +95,7 @@ struct WellnessView: View {
             .sheet(isPresented: $showingJournal) { JournalView() }
             .sheet(isPresented: $showingSleep) { SleepLogView() }
             .sheet(isPresented: $showingAssessments) { AssessmentView() }
+            .sheet(isPresented: $showingHopeBox) { HopeBoxView() }
             .sheet(isPresented: $showingCBT) { CBTThoughtReframerView() }
             .sheet(isPresented: $showingDBT) { DBTFocusFlowView() }
             .sheet(isPresented: $showingAnger) { AngerManagementView() }
@@ -259,7 +260,11 @@ struct WellnessView: View {
 
     private func toolGrid() -> some View {
         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-            toolCard(title: "Assessments", icon: "cloud.rain.fill", color: Theme.blue, destination: AssessmentView())
+            Button(action: { showingAssessments = true }) {
+                toolCardLabel(title: "Assessments", icon: "cloud.rain.fill", color: Theme.blue)
+            }
+            .buttonStyle(.plain)
+            
             toolCard(title: "Somatic Lab", icon: "figure.walk.motion", color: Theme.blue, destination: SomaticLabView())
             toolCard(title: "Daily Article", icon: "doc.text.fill", color: Theme.orange, destination: PersonalizedArticleView())
             
@@ -273,16 +278,34 @@ struct WellnessView: View {
             }
             .buttonStyle(.plain)
 
-            toolCard(title: "Hope Box", icon: "archivebox.fill", color: Theme.orange, destination: HopeBoxView())
-            toolCard(title: "Sleep", icon: "moon.fill", color: Color(hex: "6366f1"), destination: SleepLogView())
+            Button(action: { showingHopeBox = true }) {
+                toolCardLabel(title: "Safe Space", icon: "archivebox.fill", color: Theme.orange)
+            }
+            .buttonStyle(.plain)
+            
+            Button(action: { showingSleep = true }) {
+                toolCardLabel(title: "Sleep", icon: "moon.fill", color: Color(hex: "6366f1"))
+            }
+            .buttonStyle(.plain)
             
             if store.userGender == "Female" {
                 toolCard(title: "Cycle", icon: "drop.fill", color: .pink, destination: CycleTrackerView())
             }
 
-            toolCard(title: "CBT Lab", icon: "brain.head.profile", color: Theme.blue, destination: CBTThoughtReframerView())
-            toolCard(title: "DBT Lab", icon: "flowchart.fill", color: .purple, destination: DBTFocusFlowView())
-            toolCard(title: "Anger Lab", icon: "flame.fill", color: .orange, destination: AngerManagementView())
+            Button(action: { showingCBT = true }) {
+                toolCardLabel(title: "CBT Lab", icon: "brain.head.profile", color: Theme.blue)
+            }
+            .buttonStyle(.plain)
+            
+            Button(action: { showingDBT = true }) {
+                toolCardLabel(title: "DBT Lab", icon: "flowchart.fill", color: .purple)
+            }
+            .buttonStyle(.plain)
+            
+            Button(action: { showingAnger = true }) {
+                toolCardLabel(title: "Anger Lab", icon: "flame.fill", color: .orange)
+            }
+            .buttonStyle(.plain)
         }
     }
     

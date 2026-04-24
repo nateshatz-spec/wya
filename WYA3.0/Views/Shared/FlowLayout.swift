@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct FlowLayout: Layout {
-    var spacing: CGFloat = 8
+    var horizontalSpacing: CGFloat = 8
+    var verticalSpacing: CGFloat = 8
     
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         let rows = computeRows(proposal: proposal, subviews: subviews)
@@ -31,10 +32,10 @@ struct FlowLayout: Layout {
                 rows.append(currentRow)
                 currentRow = RowData()
                 x = 0
-                y = currentRow.maxY + spacing
+                y = currentRow.maxY + verticalSpacing
             }
             currentRow.items.append((view, CGRect(x: x, y: y, width: size.width, height: size.height)))
-            x += size.width + spacing
+            x += size.width + horizontalSpacing
         }
         
         if !currentRow.items.isEmpty {
