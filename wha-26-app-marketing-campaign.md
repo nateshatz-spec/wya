@@ -1,179 +1,194 @@
-# WHA-26 What's Your Anxiety — App-Centric Marketing Campaign
+# WHA-26 WYA — App-Centric Marketing Campaign (v2, repo-aligned)
 
-## Overview
+> **Updated with real app context from** [github.com/nateshatz-spec/wya](https://github.com/nateshatz-spec/wya)
 
-A complete marketing campaign built around the **What's Your Anxiety (WHA)** mobile app. This replaces the generic B2B templates with an app-first strategy targeting people actively seeking anxiety relief, mental health support, and self-care tools.
+## Product Reality (from codebase)
+
+- **Name:** WYA ("What's Your Anxiety" / "Where You At")
+- **Platform:** iOS (SwiftUI), Cloudflare Workers backend
+- **Tagline:** "Your Mind, Unlocked."
+- **Positioning:** Premium mental health toolkit bridging clinical therapy and daily wellness. Cinematic design meets evidence-based clinical tools.
+- **Key Features:**
+  - **Aura Intelligence:** Dynamic UI that shifts color palette based on mood state. Correlates sleep, medication, and activities for real-time mental state visualization.
+  - **Clinical Labs:** Interactive CBT Studio, DBT Focus Flow, Anger Lab (Pressure Valve haptic minigame).
+  - **Crisis Command:** Rapid-access safety plan and crisis resource hub.
+  - **Cloud Sync:** End-to-end encrypted sync via Cloudflare D1.
+  - **Plus Subscription:** Exclusive app icons, Home Screen widgets, Aura Wallpaper exports, advanced clinical deep-dives.
+- **Production API:** `https://api.whatsyouranxiety.com`
+- **Landing Page:** `https://whatsyouranxiety.com` (beta registration)
+- **Current Status:** Beta testing phase, pre-launch
 
 ## Campaign Identity
 
-- **Campaign Name:** "You're Not Alone in This"
-- **Tagline:** Understand your anxiety. Take back control.
-- **Core Message:** WHA gives you a personalized map of your anxiety — what triggers it, what it looks like, and what actually helps — so you can stop guessing and start feeling better.
-- **Visual Tone:** Calm, warm, approachable. Soft gradients (lavender, sage, warm beige). No clinical or sterile imagery. Real people, not stock photos.
+- **Campaign Name:** "Clinical Therapy Meets Cinematic Design"
+- **Tagline:** "Your mental health deserves more than a utilitarian checklist."
+- **Core Message:** WYA is the first wellness app that looks as good as it works — evidence-based clinical tools (CBT, DBT, Anger Management) wrapped in a premium, cinematic interface that makes mental health feel like a lifestyle upgrade, not a chore.
+- **Visual Tone:** Dark mode-first, cinematic gradients, Apple-esque premium aesthetic. Think Apple Health meets a high-end design portfolio. Aura color palettes (Ice Blue, Solar Flare, Midnight, Gold).
 
 ## Target Audience
 
 ### Primary Personas
 
-| Persona | Description | Pain Point | WHA Value |
+| Persona | Description | Pain Point | WYA Value |
 |---------|-------------|------------|-----------|
-| **The Overthinker** (18-34) | High-functioning, anxious, uses apps for wellness | Can't quiet their mind, overthinks everything | Identifies thought patterns, offers grounding techniques |
-| **The Panic Sufferer** (22-45) | Experiences panic attacks, seeks immediate relief | Fear of next attack, feels out of control | SOS tools, breathing guides, panic de-escalation flows |
-| **The Caregiver Parent** (30-50) | Worried about their teen/child's anxiety | Doesn't know how to help, feels helpless | Understanding anxiety types, conversation guides, resources |
-| **The Newly Diagnosed** (any age) | Recently diagnosed with GAD, social anxiety, etc. | Overwhelmed by information, doesn't know where to start | Structured learning path, curated resources, community |
+| **The Modern Striver** (22-35) | High-performing, design-conscious, uses premium apps | Wellness apps are ugly and feel clinical | WYA looks beautiful AND works — fits their aesthetic standards |
+| **The Self-Optimizer** (25-40) | Tracks everything, loves data, already in therapy | Generic wellness advice doesn't help | Aura Intelligence gives personalized, data-driven insights |
+| **The Therapy-Curious** (20-35) | Interested in CBT/DBT but intimidated by clinical settings | Doesn't know where to start with therapy tools | Clinical Labs make evidence-based therapy feel approachable and interactive |
+| **The Anger/Anxiety Sufferer** (18-45) | Needs immediate relief tools | Panic/anger hits fast, needs something now | Pressure Valve (Anger Lab) and Crisis Command provide instant, tactile relief |
 
 ### Secondary Audiences
 
-- Therapists and counselors looking for at-home tools to recommend
-- HR/wellness professionals evaluating mental health benefits
-- College students dealing with academic and social anxiety
+- Design/tech community who appreciate well-crafted apps
+- Mental health professionals looking for at-home tools to recommend
+- Apple ecosystem enthusiasts who value premium app experiences
 
 ## Messaging Framework
 
-### Pillar 1: Understanding
+### Pillar 1: Design as Therapy
 
-> "You can't manage what you don't understand."
+> "Wellness apps are too ugly for how much they cost."
 
-- Interactive anxiety assessments that map your specific type
-- Educational content about anxiety mechanisms
-- Personalized anxiety profiles
-
-**Sample Copy:**
-- "Is it anxiety or just stress? Take the 2-minute assessment."
-- "Your anxiety has a name. Knowing it is the first step."
-- "5 types of anxiety. Which one is yours?"
-
-### Pillar 2: Relief
-
-> "Real tools that work when you need them."
-
-- Breathing exercises, grounding techniques, guided sessions
-- SOS panic button for acute moments
-- Evidence-based CBT and mindfulness tools
+- WYA's cinematic design isn't vanity — it's part of the therapy. Beautiful interfaces reduce friction, increase engagement, and make daily mental health practice feel like self-care, not a chore.
+- The Aura Engine dynamically shifts your app's entire color palette based on your mood state.
 
 **Sample Copy:**
-- "Panic hitting? Press the button. Breathe through it."
-- "3 minutes. That's all the grounding exercise takes."
-- "Tools that therapists recommend — in your pocket."
+- "Clinical therapy meets cinematic design."
+- "Your mental state isn't static. Neither should your app be."
+- "The first wellness app designed to be a premium lifestyle accessory."
 
-### Pillar 3: Progress
+### Pillar 2: Evidence-Based, Not Woo
 
-> "See yourself getting better."
+> "Real therapy tools. Real relief. No crystals required."
 
-- Mood and anxiety tracking over time
-- Progress reports and milestones
-- Community stories and shared experiences
+- CBT Studio, DBT Focus Flow, Anger Lab — all evidence-based, all interactive.
+- Built on clinical frameworks, not generic wellness platitudes.
+- Designed with mental health professionals.
 
 **Sample Copy:**
-- "Your anxiety isn't forever. Track your progress."
-- "30 days. 47% less anxiety. Your story starts here."
-- "See the patterns. Break the cycle."
+- "CBT that doesn't feel like homework."
+- "Evidence-based therapy tools in your pocket."
+- "Not another breathing app. A clinical toolkit."
+
+### Pillar 3: Immediate Relief
+
+> "When it hits, you need something that works — now."
+
+- Pressure Valve in the Anger Lab: haptic-guided breathing to physically release tension.
+- Crisis Command: rapid-access safety plan, one tap to resources.
+- No signup wall for crisis tools.
+
+**Sample Copy:**
+- "Panic hitting? Pressure Valve works in 60 seconds."
+- "Crisis Command. One tap. Real help. Right now."
+- "The most satisfying thing you'll do for your mental health today."
 
 ## Campaign Channels
 
 ### Organic Social
 
-**Instagram / TikTok (Primary)**
-- Short-form video content: "Signs you have anxiety you didn't know"
-- Carousel posts: Anxiety type explainers
-- Reels: Quick grounding techniques, breathing exercises
-- Stories: Daily check-ins, polls, Q&A with mental health professionals
-- Posting cadence: 1-2 posts/day, 5-10 stories/day
+**TikTok / Instagram Reels (Primary)**
+- "POV: You found the most aesthetic wellness app on the App Store"
+- Pressure Valve demo videos (satisfying, ASMR-adjacent)
+- Aura Engine showcases — mood color palette transitions
+- "Apps that feel like therapy should" comparison content
+- Posting cadence: 1-2 videos/day, 5-10 stories/day
 
 **X / Twitter**
-- Thread series on anxiety education
-- Real-time support content during high-anxiety events (news cycles, exams, etc.)
-- Community engagement with mental health advocates
+- "Wellness apps are too ugly for how much they cost" thread
+- Design community engagement
+- Mental health discourse with product integration
+- Beta tester recruitment
 
-**LinkedIn**
-- Workplace anxiety content
-- Manager/HR-focused mental health posts
-- Thought leadership on mental health in the workplace
+**Instagram (Static + Carousel)**
+- App screenshot showcases with Aura color variants
+- Feature breakdowns (Clinical Labs, Aura Intelligence)
+- Before/after mood tracking visualizations
 
 ### Paid Acquisition
 
 **Meta (Instagram + Facebook)**
-- Target: interests in mental health, meditation, therapy, wellness
-- Lookalike audiences from app users (once scale achieved)
-- Creative formats: Reels, carousel, story ads
-- Budget allocation: 45% of paid spend
+- Target: interests in design, Apple products, wellness, therapy, meditation
+- Lookalike audiences from beta testers (once scale achieved)
+- Creative: App mockup ads, Pressure Valve demo videos, Aura Engine showcases
+- Budget allocation: 40% of paid spend
 
 **TikTok Ads**
 - Spark Ads (boosted organic content)
-- In-feed video ads
-- Target: Gen Z and millennial audiences with wellness interests
-- Budget allocation: 25% of paid spend
+- In-feed video ads showcasing the app's design + functionality
+- Target: 18-35, design-conscious, wellness-interested
+- Budget allocation: 30% of paid spend
 
 **Google Search**
-- Keywords: "anxiety help", "panic attack relief", "anxiety test", "anxiety app"
-- Competitor conquesting keywords
+- Keywords: "best anxiety app", "CBT app", "wellness app design", "mood tracking app"
+- Competitor conquesting: Calm, Headspace, BetterHelp alternatives
 - Budget allocation: 20% of paid spend
 
-**YouTube**
-- Pre-roll ads on mental health, therapy, wellness content
-- Shorts for quick tips
+**Reddit**
+- r/Anxiety, r/CBT, r/Design, r/iOSApps, r/Apple
+- Authentic community engagement, not hard-sell ads
 - Budget allocation: 10% of paid spend
 
 ### Content Marketing
 
 **Blog / SEO**
-- "What Is [Type] Anxiety?" series
-- "How to Deal With..." practical guides
-- "Anxiety vs. [X]" comparison posts
-- Expert-reviewed articles for authority
-- Target: 2-3 articles/week
+- "Why Most Wellness Apps Fail (And What We Built Instead)"
+- "CBT vs. DBT: Which One Do You Actually Need?"
+- "The Design of Mental Health: Why Aesthetics Matter in Therapy Apps"
+- "How the Aura Engine Works: Mood Tracking That Actually Helps"
+- Target: 2 articles/week
 
-**Email Newsletter**
-- Weekly "Calm Check-In" newsletter
-- Subject lines: personal, warm, non-clickbait
-- Content mix: tips, stories, tool spotlights, community highlights
-- Segmentation: by anxiety type, engagement level, user status
+**Email / Newsletter**
+- Beta tester updates with exclusive previews
+- "The WYA Journal" — weekly mental health + design insights
+- Feature spotlights and user stories
 
-### Partnerships
+### PR and Community
 
-**Mental Health Influencers**
-- Micro-influencers (10K-100K) who speak openly about anxiety
-- Authentic storytelling partnerships, not scripted ads
-- Affiliate program with unique codes
+**Design Community**
+- Submit to Product Hunt, Dribbble, Behance
+- Reach out to design newsletters and podcasts
+- "The most beautiful wellness app" angle
 
-**Therapist Community**
-- Free professional accounts for therapists
-- Co-created content with licensed professionals
-- Referral program
+**Mental Health Community**
+- Partner with therapists who use digital tools
+- Contribute to mental health tech discussions
+- Expert-reviewed content for authority
 
-**Organizations**
-- NAMI (National Alliance on Mental Illness) partnerships
-- College counseling center outreach
-- Workplace wellness program integrations
+**Tech Community**
+- SwiftUI showcase content
+- Cloudflare Workers backend story
+- iOS developer community engagement
 
 ## Launch Timeline
 
-### Phase 1: Pre-Launch (Weeks -4 to -1)
+### Phase 1: Pre-Launch / Beta (Weeks -6 to -1)
 
 | Week | Activities |
 |------|-----------|
-| W-4 | Social accounts established. Teaser campaign begins. "Something's coming for your anxiety" |
-| W-3 | Influencer outreach and briefings. Content backlog created (20+ posts). |
-| W-2 | Beta user testimonials collected. Landing page finalized. Email list building begins. |
-| W-1 | Press releases distributed. App store optimization complete. Influencer content scheduled. |
+| W-6 | Landing page live with beta registration. Social accounts established. Teaser content begins. |
+| W-5 | Beta tester recruitment via social, Reddit, design communities. |
+| W-4 | First beta build distributed. Collect feedback and testimonials. |
+| W-3 | Pressure Valve demo video goes viral strategy. Influencer outreach begins. |
+| W-2 | Content backlog created (20+ posts). PR outreach to design + mental health press. |
+| W-1 | App Store submission. Press releases distributed. Beta testimonial compilation. |
 
 ### Phase 2: Launch Week (Week 0)
 
 | Day | Activities |
 |-----|-----------|
-| Mon | App launch. Press coverage goes live. Founder story post. |
-| Tue | "What type of anxiety do you have?" interactive content series launches. |
-| Wed | Influencer content wave 1 goes live. Paid ads turn on. |
-| Thu | Live AMA with mental health professional on Instagram. |
-| Fri | User testimonial compilation. Week 1 recap post. |
-| Sat-Sun | Community engagement. UGC collection begins. |
+| Mon | App Store launch. Press coverage goes live. Product Hunt submission. |
+| Tue | Pressure Valve demo video launches across TikTok/Reels. |
+| Wed | Aura Engine showcase content. Influencer wave 1 goes live. |
+| Thu | "Why Wellness Apps Are Too Ugly" thought leadership thread. |
+| Fri | Beta tester testimonials compilation. Week 1 recap. |
+| Sat-Sun | Community engagement. UGC collection. |
 
 ### Phase 3: Growth (Weeks 1-8)
 
 | Phase | Focus |
 |-------|-------|
-| Weeks 1-2 | Optimize paid campaigns based on early data. Scale winning creatives. |
-| Weeks 3-4 | Launch referral program. Begin podcast sponsorships. |
+| Weeks 1-2 | Optimize paid campaigns. Scale winning creatives. Product Hunt follow-up. |
+| Weeks 3-4 | Launch Plus subscription marketing. Feature spotlight series. |
 | Weeks 5-6 | Content marketing push. SEO articles start ranking. |
 | Weeks 7-8 | Partnership announcements. Community milestone celebration. |
 
@@ -181,8 +196,8 @@ A complete marketing campaign built around the **What's Your Anxiety (WHA)** mob
 
 - Evergreen content machine running
 - Paid optimization ongoing (weekly creative refresh)
-- Community building and UGC amplification
-- Seasonal campaigns (Mental Health Awareness Month, exam season, back-to-school anxiety, holiday stress)
+- Seasonal campaigns (Mental Health Awareness Month, back-to-school stress, holiday anxiety)
+- Feature update marketing (each new Clinical Lab or Aura feature gets its own mini-campaign)
 
 ## KPIs and Targets
 
@@ -190,131 +205,107 @@ A complete marketing campaign built around the **What's Your Anxiety (WHA)** mob
 
 | Metric | Month 1 | Month 3 | Month 6 |
 |--------|---------|---------|---------|
-| Social followers | 5,000 | 25,000 | 75,000 |
-| Monthly impressions | 500K | 3M | 10M |
-| Brand search volume | +25% | +100% | +300% |
-| Press mentions | 5 | 20 | 50+ |
+| Social followers | 3,000 | 15,000 | 50,000 |
+| Monthly impressions | 300K | 2M | 8M |
+| Brand search volume | +50% | +200% | +500% |
+| Press mentions | 3 | 15 | 40+ |
 
 ### Acquisition
 
 | Metric | Month 1 | Month 3 | Month 6 |
 |--------|---------|---------|---------|
-| App downloads | 2,000 | 15,000 | 50,000 |
-| Cost per install | $3.50 | $2.50 | $1.75 |
-| Email subscribers | 1,000 | 8,000 | 25,000 |
-| Organic vs paid ratio | 40/60 | 55/45 | 70/30 |
+| App downloads | 1,500 | 10,000 | 40,000 |
+| Cost per install | $4.00 | $3.00 | $2.00 |
+| Beta to paid conversion | 15% | 20% | 25% |
+| Organic vs paid ratio | 30/70 | 50/50 | 65/35 |
 
 ### Engagement
 
 | Metric | Month 1 | Month 3 | Month 6 |
 |--------|---------|---------|---------|
-| Social engagement rate | 4% | 5% | 6% |
-| Email open rate | 35% | 40% | 42% |
-| App DAU/MAU | 25% | 35% | 40% |
-| Content time on page | 2:30 | 3:30 | 4:00 |
+| Social engagement rate | 5% | 6% | 7% |
+| Email open rate | 40% | 45% | 48% |
+| App DAU/MAU | 30% | 40% | 45% |
+| Clinical Labs completion rate | 40% | 55% | 65% |
 
-### Retention
+### Revenue
 
 | Metric | Month 1 | Month 3 | Month 6 |
 |--------|---------|---------|---------|
-| Day 7 retention | 30% | 35% | 40% |
-| Day 30 retention | 15% | 20% | 25% |
-| Subscription conversion | 5% | 8% | 12% |
-| NPS | 40 | 50 | 60 |
+| Plus subscriptions | 200 | 1,500 | 5,000 |
+| MRR | $1,000 | $7,500 | $25,000 |
+| Churn rate | <10% | <8% | <6% |
+| LTV | $25 | $40 | $60 |
 
 ## Creative Briefs
 
-### Video Ad Concept 1: "The Moment"
+### Video Ad Concept 1: "Pressure Valve" (Hero Ad)
 - **Length:** 15s, 30s
 - **Format:** Vertical (Reels/TikTok/Shorts)
-- **Hook:** "That moment when your chest tightens and your mind races..."
-- **Body:** Show the anxiety moment, then the WHA app opening, breathing exercise, calm returns
-- **CTA:** "Download WHA. Breathe through it."
+- **Hook:** Close-up of the Pressure Valve in the Anger Lab. User pressing it, steam emitting with satisfying hiss. Screen glowing orange.
+- **Body:** "This is the most satisfying thing you'll do for your mental health today. WYA's Anger Lab — tactile, haptic, evidence-based."
+- **CTA:** "Download WYA. Release the pressure."
+- **Audio:** Lo-fi chill hop with subtle heartbeat
 
-### Video Ad Concept 2: "Did You Know"
+### Video Ad Concept 2: "Aura Engine"
 - **Length:** 30s
 - **Format:** Vertical
-- **Hook:** "Did you know there are 5 different types of anxiety?"
-- **Body:** Quick-fire list with visual icons. "WHA helps you figure out which one is yours."
-- **CTA:** "Take the free assessment. Link in bio."
+- **Hook:** "Your mental state isn't static. Neither should your app be."
+- **Body:** Show the app's UI shifting through Aura color palettes — Ice Blue (calm/focused), Solar Flare (energetic/creative), Midnight (resting/deep). Each transition is smooth, cinematic.
+- **CTA:** "See your Aura. Download WYA."
 
-### Video Ad Concept 3: "Real People"
-- **Length:** 30s, 60s
-- **Format:** Horizontal + Vertical
-- **Hook:** Real user testimonial (authentic, not polished)
-- **Body:** User shares their anxiety journey and how WHA helped
-- **CTA:** "Join thousands who understand their anxiety better."
+### Video Ad Concept 3: "Ugly Wellness"
+- **Length:** 30s
+- **Format:** Vertical
+- **Hook:** "Wellness apps are too ugly for how much they cost."
+- **Body:** Side-by-side comparison: generic wellness app vs. WYA's cinematic interface. "Clinical therapy meets cinematic design."
+- **CTA:** "Your mental health deserves better. WYA."
 
 ### Static Ad Concepts
 
-1. **"Name It to Tame It"** — Visual of anxiety types with checkmark prompt
-2. **"Your Anxiety Profile"** — Screenshot-style mockup of personalized results
-3. **"3 Minutes to Calm"** — Timer visual with breathing guide preview
-4. **"Before/After Mood"** — Graph showing anxiety reduction over time
-
-## App Store Optimization
-
-### Title
-What's Your Anxiety — Understand & Manage
-
-### Subtitle
-Anxiety assessment, tools & relief
-
-### Keywords
-anxiety, mental health, panic attack, stress relief, meditation, CBT, mindfulness, breathing, anxiety test, worry
-
-### Description Structure
-1. Hook: "Understand your anxiety in 2 minutes"
-2. Features overview (assessment, tools, tracking)
-3. Evidence-based approach
-4. Testimonials
-5. CTA
-
-### Screenshots
-1. Assessment results screen
-2. SOS panic tool
-3. Breathing exercise
-4. Progress tracking
-5. Community/support
+1. **"Aura Variants"** — Four phone mockups showing different Aura color states
+2. **"Clinical Labs"** — Screenshot of CBT Studio with tagline "CBT that doesn't feel like homework"
+3. **"Pressure Valve"** — Close-up of the Anger Lab with haptic visualization
+4. **"Crisis Command"** — Safety plan interface with "One tap. Real help." tagline
 
 ## Budget Summary (Month 1)
 
 | Category | Amount | % |
 |----------|--------|---|
-| Paid Social (Meta + TikTok) | $7,000 | 50% |
-| Google Search | $3,000 | 21% |
-| YouTube | $1,500 | 11% |
-| Influencer Partnerships | $1,500 | 11% |
-| Content Production | $1,000 | 7% |
+| Paid Social (Meta + TikTok) | $5,600 | 40% |
+| TikTok Ads | $4,200 | 30% |
+| Google Search | $2,800 | 20% |
+| Reddit + Community | $1,400 | 10% |
 | **Total** | **$14,000** | **100%** |
 
 ## Risk Mitigation
 
 | Risk | Impact | Mitigation |
 |------|--------|------------|
-| Ad account rejection (health policy) | High | Pre-review all creatives against platform policies. Have backup creatives ready. |
-| Negative reviews about mental health claims | Medium | Ensure all claims are evidence-based. Include disclaimers. Respond to reviews professionally. |
-| Low initial retention | Medium | Focus onboarding experience. Use lifecycle messaging to drive Day 1-7 engagement. |
-| Influencer misalignment | Low | Vetting process. Clear briefs. Content approval before posting. |
-| Budget burn without conversions | High | Daily monitoring. Guardrails at ad set level. Pause underperformers quickly. |
+| Ad account rejection (health policy) | High | Pre-review all creatives against platform policies. Focus on design angle, not medical claims. |
+| "Too premium" perception | Medium | Emphasize free features and beta access. Plus subscription is optional upgrade. |
+| Low retention post-download | Medium | Strong onboarding with Clinical Labs walkthrough. Aura Engine personalization drives return visits. |
+| Competitor comparison (Calm, Headspace) | Medium | Differentiate on design + clinical specificity. Not meditation — interactive therapy tools. |
+| Beta tester churn before launch | Low | Exclusive previews, behind-the-scenes content, direct founder engagement with beta community. |
 
 ## Legal and Compliance Notes
 
-- All health-related claims must be substantiated
-- Include "not a replacement for professional therapy" disclaimer
-- Follow platform-specific mental health advertising policies
-- User testimonials must be genuine and include typical results disclaimer
-- Privacy policy and data handling must be transparent, especially for health data
+- WYA is a wellness tool, not a replacement for professional therapy
+- Include appropriate disclaimers in all marketing materials
+- Follow Apple App Store guidelines for health/wellness apps
+- Privacy-first messaging must align with actual data practices (end-to-end encryption, Cloudflare D1)
+- Crisis Command must include proper crisis resource links and disclaimers
 
 ## Asset Production Checklist
 
-- [ ] 3 video ads (15s, 30s, 60s variants)
-- [ ] 6 static ad creatives
+- [ ] Pressure Valve demo video (15s + 30s variants)
+- [ ] Aura Engine showcase video (30s)
+- [ ] "Ugly Wellness" comparison video (30s)
+- [ ] 6 static ad creatives (Aura variants, Clinical Labs, Pressure Valve, Crisis Command)
 - [ ] 20+ social media posts (pre-built content bank)
-- [ ] Landing page / app download page
-- [ ] Email newsletter templates (welcome, weekly, re-engagement)
-- [ ] App store screenshots (5-8 images)
-- [ ] Press kit (logo, founder photo, fact sheet)
-- [ ] Influencer brief and partnership template
-- [ ] Referral program assets
-- [ ] Blog article templates (5 articles pre-written)
+- [ ] App Store Optimization (title, subtitle, description, keywords, screenshots)
+- [ ] Product Hunt launch page
+- [ ] Press kit (logo, screenshots, founder photo, fact sheet)
+- [ ] Email templates (beta welcome, weekly journal, launch announcement)
+- [ ] Blog articles (5 pre-written, SEO-optimized)
+- [ ] Landing page optimization (convert from beta to launch)

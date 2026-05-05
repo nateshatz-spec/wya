@@ -1,231 +1,226 @@
-# WHA-26 Launch Week Content Calendar — "You're Not Alone in This"
+# WHA-26 Launch Week Content Calendar — "Clinical Therapy Meets Cinematic Design"
 
-## Day -3 (Monday) — Teaser
+## Day -7 (Monday) — Beta Push
 
-**Instagram Post**
-- **Type:** Carousel (5 slides)
-- **Copy:** "Something's coming for your anxiety. 3 days. Are you ready to finally understand it?"
-- **Visual:** Dark gradient with subtle text "03" — countdown aesthetic
-- **CTA:** Turn on post notifications
+**Instagram / TikTok**
+- **Type:** Video Reel (15s)
+- **Copy:** "7 days until WYA launches. Here's what you've been waiting for."
+- **Visual:** Quick cuts of Aura Engine color transitions — Ice Blue → Solar Flare → Midnight
+- **CTA:** "Last chance to join the beta. Link in bio."
 
 **X / Twitter**
-- **Copy:** "Your anxiety has a name. In 3 days, we'll help you find it. #WhatsYourAnxiety"
+- **Copy:** "One week from today, WYA drops on the App Store. Beta registration closes Friday. If you want early access to Clinical Labs and the Aura Engine — now's the time."
 
 **Stories**
-- Poll: "Do you know what type of anxiety you have?" (Yes / No / Not sure)
+- Countdown sticker: "7 days"
+- Beta tester testimonial share
 
 ---
 
-## Day -2 (Tuesday) — Education Teaser
+## Day -5 (Wednesday) — Pressure Valve Teaser
 
 **TikTok / Reel**
 - **Type:** Video (15s)
-- **Script:** "There are 5 types of anxiety. Most people don't know which one they have. Wednesday, we're showing you how to find out."
-- **Visual:** Quick cuts of each type name appearing on screen
-- **Audio:** Trending calm/lo-fi track
+- **Script:** ASMR-style. Close-up of the Pressure Valve in the Anger Lab. Finger pressing it, steam emitting with satisfying hiss, screen glowing orange. No voiceover. Just the sound.
+- **Text Overlay:** "This is the Anger Lab. Coming Friday."
+- **Audio:** Natural hiss + subtle lo-fi beat
+
+**X / Twitter**
+- **Copy:** "The most satisfying thing you'll do for your mental health drops in 2 days. 💨"
+
+**Reddit (r/iOSApps, r/Design)**
+- **Post:** "I built a haptic-guided breathing tool inside a wellness app. The Pressure Valve in WYA's Anger Lab." (Show video, ask for feedback)
+
+---
+
+## Day -3 (Friday) — Beta Closes
+
+**All Channels**
+- **Copy:** "Beta registration closes tonight at midnight. Final call."
+
+**Email to Beta Waitlist**
+- **Subject:** "Tonight's the night. Beta closes at midnight."
+- **Body:** Thank you for your interest. Final hours to join. What you'll get as a beta tester: early access to all Clinical Labs, direct line to the team, Plus subscription at launch pricing.
 
 **Instagram Post**
 - **Type:** Single image
-- **Copy:** "Generalized anxiety. Social anxiety. Panic disorder. Phobias. OCD. Which one sounds familiar? Tomorrow — find out."
-- **Visual:** Clean graphic with 5 anxiety type icons
-
-**X / Twitter**
-- **Thread:** "5 types of anxiety, explained in 5 tweets" (thread starter, finish tomorrow)
+- **Visual:** App mockup with "BETA CLOSING TONIGHT" overlay
+- **CTA:** Link in bio — last chance
 
 ---
 
-## Day -1 (Wednesday) — Assessment Launch
+## Day -1 (Sunday) — Launch Eve
 
-**Instagram Post**
-- **Type:** Carousel (7 slides)
-- **Copy:** "Take the 2-minute anxiety assessment. Know what you're dealing with before it deals with you. Link in bio."
-- **Visual:** Each slide = one assessment question preview
-- **CTA:** Swipe up / Link in bio
-
-**TikTok / Reel**
+**Instagram / TikTok**
 - **Type:** Video (30s)
-- **Script:** "I just took the anxiety assessment and honestly... it nailed me. It told me I have generalized anxiety with social anxiety overlap. Here's what it said and why that actually makes me feel better."
-- **Visual:** Screen recording of assessment flow (blurred personal results)
-
-**Email Blast**
-- **Subject:** "What's YOUR anxiety? (2 min)"
-- **Body:** Intro to assessment, link, teaser of what they'll learn
+- **Script:** "Tomorrow, everything changes. WYA — the first mental health toolkit that combines Aura Intelligence with clinical therapy labs. Your mind, unlocked. Launching tomorrow on the App Store."
+- **Visual:** Full app walkthrough — home screen, Aura Engine, Clinical Labs, Crisis Command
 
 **X / Twitter**
-- **Copy:** "The anxiety assessment is live. 2 minutes. Free. No signup required. Know what you're dealing with. [link]"
+- **Thread:** "Tomorrow we launch WYA. Here's what we built and why: 1/ Most wellness apps are either beautiful but useless, or useful but ugly. We built both..."
+
+**Email to Beta Testers**
+- **Subject:** "Tomorrow. Be ready."
+- **Body:** WYA launches tomorrow. As a beta tester, you get first access. Download link will go out at 9 AM EST. Here's what to do first: take the Aura assessment, try the Pressure Valve, explore CBT Studio.
 
 ---
 
-## Day 0 (Thursday) — APP LAUNCH DAY
+## Day 0 (Monday) — LAUNCH DAY
 
 **All Channels — Coordinated Launch**
 
 **Instagram Post (Pinned)**
 - **Type:** Video + Carousel
-- **Copy:** "Today's the day. What's Your Anxiety is officially live. Here's what it does and why we built it. [Thread in comments]"
-- **Visual:** App demo video — assessment → results → tools → progress
+- **Copy:** "WYA is live on the App Store. Clinical therapy meets cinematic design. Your mind, unlocked. Here's what's inside: [Thread in comments]"
+- **Visual:** App launch video — hero sequence showing Aura Engine + Clinical Labs
 - **CTA:** Download now — link in bio
 
-**Founder Story (LinkedIn + Instagram)**
-- **Type:** Long-form post
-- **Copy:** Personal story of why WHA was built. Real, vulnerable, authentic.
-- **Visual:** Founder photo or video
+**Product Hunt**
+- **Submission:** "WYA — Clinical Therapy Meets Cinematic Design"
+- **Tagline:** "The first mental health toolkit that combines Aura Intelligence with evidence-based therapy labs."
+- **Maker Comment:** Personal story from founder about why WYA was built
 
 **TikTok / Reel**
 - **Type:** Video (30s)
-- **Script:** "We just launched an app that tells you exactly what type of anxiety you have — and gives you tools that actually work. Here's how it works in 30 seconds."
-- **Visual:** Fast-paced app walkthrough
+- **Script:** "WYA just launched and it's unlike any wellness app you've seen. The Aura Engine changes your entire app's color palette based on your mood. The Anger Lab has a literal Pressure Valve. The CBT Studio makes therapy feel like a creative exercise. Download it. You'll see."
+- **Visual:** Fast-paced app walkthrough with trending audio
 
 **X / Twitter**
-- **Copy:** "What's Your Anxiety is live. Take the assessment. Get your profile. Start feeling better. [link] #MentalHealth #Anxiety"
-- **Thread:** "Why we built WHA — a thread from our founder"
-
-**Live AMA (Instagram)**
-- **Time:** 7 PM EST
-- **Host:** Founder + mental health professional
-- **Topics:** App features, anxiety education, Q&A
-- **Promotion:** Announce 24h before, day-of reminder
+- **Copy:** "WYA is live. Clinical therapy meets cinematic design. Download on the App Store. [link] #WYA #MentalHealth #iOS"
+- **Thread:** "Why we built WYA — a thread"
 
 **Email Blast**
-- **Subject:** "It's here. What's Your Anxiety is live."
-- **Body:** Launch announcement, app features, download links, founder note
+- **Subject:** "WYA is live. Your mind, unlocked."
+- **Body:** Launch announcement, key features, download link, founder note
 
 **Stories (All Day)**
-- Countdown to AMA
-- Behind-the-scenes of launch day
+- Download counter updates
+- App Store screenshot (showing #1 or trending)
 - User reactions as they come in
 - Repost any early user content
 
 ---
 
-## Day +1 (Friday) — Social Proof
+## Day +1 (Tuesday) — Pressure Valve Goes Viral
+
+**TikTok / Reel**
+- **Type:** Video (15s) — ASMR Pressure Valve demo
+- **Copy:** "POV: You found the most satisfying wellness app on the App Store. 💨"
+- **Visual:** Same ASMR format from Day -5 but with "NOW AVAILABLE" overlay
+- **Audio:** Trending sound + natural hiss
 
 **Instagram Post**
 - **Type:** Carousel
-- **Copy:** "Day 1 numbers are in and WOW. Here's what people are saying about WHA."
-- **Visual:** Screenshots of early reviews, DMs, tweets (anonymized if needed)
-- **CTA:** "Haven't tried it yet? Link in bio."
-
-**TikTok / Reel**
-- **Type:** Video (15s)
-- **Script:** "POV: You finally know what type of anxiety you have and it's the most validating feeling ever."
-- **Visual:** Relatable content, trending format
+- **Copy:** "Day 1 numbers: [X] downloads, [X] Pressure Valve activations, [X] Clinical Labs sessions. The Anger Lab is the most-used feature. Are you surprised?"
+- **Visual:** Data visualization + app screenshots
+- **CTA:** "Try the Pressure Valve yourself. Link in bio."
 
 **X / Twitter**
-- **Copy:** "Over [X] people took the anxiety assessment yesterday. The most common type? Generalized anxiety at [X]%. Does that surprise you?"
-
-**Email**
-- **Subject:** "What people are saying about WHA"
-- **Body:** Early testimonials, most common anxiety type results, reminder to download
+- **Copy:** "The most-used feature on Day 1 of WYA? The Pressure Valve in the Anger Lab. People really needed this."
 
 ---
 
-## Day +2 (Saturday) — Education Deep Dive
-
-**Instagram Post**
-- **Type:** Carousel (10 slides)
-- **Copy:** "Everything you need to know about Generalized Anxiety Disorder (the most common type our users have). Save this for later."
-- **Visual:** Educational, well-designed infographic style
-- **CTA:** "Take the assessment to see if this is you"
-
-**Blog Post**
-- **Title:** "What Is Generalized Anxiety Disorder? A Complete Guide"
-- **SEO Focus:** "generalized anxiety disorder", "GAD symptoms", "what is GAD"
-- **Length:** 1,500-2,000 words
-- **Expert Review:** Cite mental health professional
-
-**X / Twitter**
-- **Thread:** "10 things nobody tells you about living with GAD" (educational thread)
-
----
-
-## Day +3 (Sunday) — Tools Spotlight
+## Day +2 (Wednesday) — Aura Engine Showcase
 
 **TikTok / Reel**
 - **Type:** Video (30s)
-- **Script:** "3 tools in the WHA app that help when anxiety hits hard. Number 2 saved me during a panic attack last week."
-- **Visual:** Demo of breathing exercise, grounding technique, SOS button
+- **Script:** "Your mental state isn't static. Neither should your app be. This is WYA's Aura Engine. Watch it shift from Ice Blue (calm, focused) to Solar Flare (energetic, creative) to Midnight (resting, deep). It tracks your sleep, your mood, your activity — and your app evolves with you."
+- **Visual:** Screen recording of Aura transitions with real data
 
 **Instagram Post**
-- **Type:** Single image
-- **Copy:** "Panic attacks don't wait for a convenient time. Neither does WHA. The SOS tool is free — no signup needed. Because sometimes you just need help right now."
-- **Visual:** Clean SOS button graphic
-- **CTA:** Link in bio
+- **Type:** Carousel (4 slides)
+- **Copy:** "Four Aura states. One app. Your mental health, visualized."
+- **Visual:** Each slide = one Aura color palette with phone mockup
+- **CTA:** "What's your Aura? Find out. Link in bio."
 
-**Stories**
-- Poll: "Have you ever had a panic attack?" (Yes / No / Prefer not to say)
-- Share resources for panic attack support
+**Blog Post**
+- **Title:** "How the Aura Engine Works: Mood Tracking That Actually Helps"
+- **SEO Focus:** "mood tracking app", "mental health visualization", "aura wellness"
 
 ---
 
-## Day +4 (Monday) — Workplace Anxiety
+## Day +3 (Thursday) — Clinical Labs Deep Dive
+
+**TikTok / Reel**
+- **Type:** Video (30s)
+- **Script:** "Three Clinical Labs inside WYA that actual therapists recommend. CBT Studio for reframing intrusive thoughts. DBT Focus Flow for mindfulness. And the Anger Lab with the Pressure Valve. All evidence-based. All interactive. None of them feel like homework."
+- **Visual:** Quick demo of each Clinical Lab
+
+**X / Twitter**
+- **Thread:** "CBT vs. DBT vs. Anger Management: Which one do you actually need? (And how WYA's Clinical Labs make each one feel different)"
 
 **LinkedIn Post**
 - **Type:** Long-form
-- **Copy:** "1 in 5 adults experiences anxiety. That means in a team of 20, 4 people are struggling right now. Here's what managers need to know."
-- **Visual:** Professional graphic with statistic
-- **CTA:** Share with someone who needs to see this
-
-**Instagram Post**
-- **Type:** Carousel
-- **Copy:** "Signs your 'Sunday scaries' might actually be work anxiety. And what to do about it."
-- **Visual:** Relatable, warm illustrations
-
-**X / Twitter**
-- **Copy:** "Monday anxiety is real. It's not just 'the Sunday scaries.' It's your body telling you something at work needs to change. Here's what to look for. [link to blog]"
-
-**Email**
-- **Subject:** "Monday motivation: understanding work anxiety"
-- **Body:** Tips for managing workplace anxiety, WHA tool spotlight
+- **Copy:** "We built Clinical Labs inside WYA because therapy tools shouldn't be locked behind $200/hour sessions. CBT Studio, DBT Focus Flow, and the Anger Lab — all evidence-based, all interactive, all accessible. This isn't replacing therapy. It's making therapy tools available between sessions."
 
 ---
 
-## Day +5 (Tuesday) — Community Stories
+## Day +4 (Friday) — Crisis Command + Trust
 
 **Instagram Post**
-- **Type:** Video Reel
-- **Copy:** "Real stories from real WHA users. 'I didn't know my anxiety had a name until last week.' [User story]"
-- **Visual:** User-generated content (with permission) or animated testimonial
-- **CTA:** "Share your story. Tag us."
-
-**TikTok**
-- **Type:** Stitch/Duet with user content
-- **Copy:** Amplify a viral user reaction or testimonial
+- **Type:** Single image
+- **Copy:** "Mental health apps have a responsibility. That's why WYA has Crisis Command — a rapid-access safety plan and crisis resource hub. One tap. Real help. Right now. Because sometimes you don't need an app. You need a lifeline."
+- **Visual:** Crisis Command interface (clean, serious tone)
+- **CTA:** "If you need help right now, you don't need to download anything. Call 988."
 
 **X / Twitter**
-- **Copy:** "This message came in from a user yesterday. This is why we built WHA. [screenshot of message, anonymized]"
+- **Copy:** "Every mental health app should have a crisis button. WYA does. One tap to your safety plan and crisis resources. No signup wall. No paywall. Just help."
+
+**Stories**
+- Crisis resources share (988, Crisis Text Line, etc.)
+- Serious, supportive tone
 
 ---
 
-## Day +6 (Wednesday) — One Week Recap
+## Day +5 (Saturday) — User Stories
+
+**TikTok / Reel**
+- **Type:** Video (30s)
+- **Script:** User-generated content or founder-curated testimonials. "I downloaded WYA 5 days ago and the Pressure Valve has become part of my daily routine. I use it every time I feel my anxiety climbing."
+- **Visual:** Real user footage or animated testimonial
 
 **Instagram Post**
 - **Type:** Carousel
-- **Copy:** "One week ago we launched WHA. Here's what happened. [Stats: downloads, assessments taken, most common results, top feedback]"
-- **Visual:** Clean data visualization
+- **Copy:** "5 days in. Here's what our first users are saying. [3-4 testimonials]"
+- **Visual:** Clean testimonial cards with app screenshots
+
+**X / Twitter**
+- **Copy:** "Day 5 user quote: '[Best testimonial from the week].' This is why we built WYA."
+
+---
+
+## Day +6 (Sunday) — Week One Recap
+
+**All Channels**
+- **Copy:** "One week of WYA. Here's what happened."
+
+**Instagram Post**
+- **Type:** Carousel
+- **Visual:** Week 1 stats — downloads, most used feature, most common Aura, top Clinical Lab, user rating
 - **CTA:** "Join the community"
 
 **Email**
-- **Subject:** "1 week of WHA — by the numbers"
-- **Body:** Week recap, thank you message, what's coming next
+- **Subject:** "1 week of WYA — by the numbers"
+- **Body:** Week recap, thank you, what's coming next (Plus features, new Clinical Labs)
 
 **X / Twitter**
-- **Copy:** "1 week of WHA: [X] assessments taken, [X] downloads, [X] countries. Thank you. This is just the beginning."
+- **Copy:** "1 week of WYA: [X] downloads, [X] Pressure Valve activations, [X] Clinical Labs sessions completed, [X] countries. Thank you. This is just the beginning."
 
 ---
 
-## Day +7 (Thursday) — What's Next
+## Day +7 (Monday) — What's Next / Plus Teaser
 
-**Instagram Post**
-- **Type:** Single image or video teaser
-- **Copy:** "You asked, we're building. Here's what's coming to WHA next. [Feature teaser]"
-- **Visual:** Sneak peek graphic or short video
-- **CTA:** "What feature do YOU want next? Comment below."
+**Instagram / TikTok**
+- **Type:** Video (15s)
+- **Script:** "WYA Plus is coming. Exclusive app icons. Interactive Home Screen widgets. Aura Wallpaper exports. Advanced clinical deep-dives. Here's a first look."
+- **Visual:** Sneak peek of Plus features — icon variants, widget mockups, wallpaper exports
 
-**All Channels**
-- Engage with all comments from the week
-- Respond to every mention
-- Collect feedback for product roadmap
+**X / Twitter**
+- **Copy:** "WYA Plus is next. Exclusive icons, widgets, Aura Wallpapers, and advanced Clinical Labs. Beta users get first access. Stay tuned."
+
+**Email to Beta Testers**
+- **Subject:** "Exclusive first look: WYA Plus"
+- **Body:** Sneak peek of Plus features, early access offer, launch pricing
 
 ---
 
@@ -233,13 +228,14 @@
 
 | Day | Content Type | Platform |
 |-----|-------------|----------|
-| Monday | Workplace/professional anxiety content | LinkedIn, X |
-| Tuesday | Educational carousel | Instagram |
-| Wednesday | Tool demo / technique | TikTok, Reels |
+| Monday | Clinical Lab spotlight | TikTok, Reels |
+| Tuesday | Aura Engine / data visualization | Instagram, Blog |
+| Wednesday | Thought leadership / design angle | X, LinkedIn |
 | Thursday | User story / testimonial | All platforms |
-| Friday | Fun/relatable anxiety content | TikTok, X |
-| Saturday | Deep-dive blog article | Blog, X thread |
-| Sunday | Calm/check-in, community engagement | Instagram Stories |
+| Friday | ASMR / satisfying content (Pressure Valve) | TikTok, Reels |
+| Saturday | Educational thread / carousel | X, Instagram |
+| Sunday | Community engagement, calm check-in | Stories |
 
 **Daily Stories:** 5-10 per day across Instagram/TikTok
 **Email:** 1 per week (Tuesday or Thursday)
+**Blog:** 2 articles/week
