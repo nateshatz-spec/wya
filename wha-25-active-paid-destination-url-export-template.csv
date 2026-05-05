@@ -1,0 +1,4 @@
+platform,account_name,campaign_id,campaign_name,adset_or_adgroup_id,adset_or_adgroup_name,ad_id,ad_name,status,final_destination_url,landing_page_base_url,utm_source,utm_medium,utm_campaign,utm_content,utm_term,click_id_key,exported_at_utc,notes
+google,,,,,,,,,,,,,,,,,,
+meta,,,,,,,,,,,,,,,,,,
+linkedin,,,,,,,,,,,,,,,,,,
