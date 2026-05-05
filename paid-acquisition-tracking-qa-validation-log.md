@@ -16,26 +16,28 @@ Validate paid acquisition instrumentation and dashboard readiness for:
 
 ## WHA-21 validation result (UTM matrix + click-id capture)
 
-Status: blocked on live evidence collection.
+**Status: PASS — 2026-05-05**
 
-Confirmed by documentation review:
-- UTM matrix contract is explicitly defined (`utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term`).
-- Click-id capture requirement is explicitly defined (`gclid`, `fbclid`, `li_fat_id` where available).
-- Paid-session attribution completeness threshold is defined (<3% missing UTM/click-id).
+All 6 pass criteria met. See `wha-21-validation-report.md` for full details.
 
-Still required to pass `WHA-21`:
-- Live paid destination URL export proving links match approved UTM matrix.
-- Session-level event sample/export proving required UTMs persist through redirect and signup.
-- Event sample/export proving click IDs are captured by channel where supported.
+### Evidence collected
+- UTM conformance audit: 10/10 active paid URLs PASS (from [WHA-24](/WHA/issues/WHA-24))
+- Paid-session UTM extract: 10 sample sessions, 100% complete UTMs (from [WHA-23](/WHA/issues/WHA-23))
+- UTM persistence tests: 3/3 channels PASS — redirect + signup flow (from [WHA-23](/WHA/issues/WHA-23))
+- Aggregate warehouse metrics (1,247 paid sessions):
+  - Missing attribution: 2.97% (threshold <3%)
+  - Click-ID capture: 95.3% (threshold >95%)
 
-## QA checklist and pass criteria
+### QA checklist — Check 1 status
+- [x] All paid destination URLs use approved UTM matrix — 10/10 PASS
+- [x] `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` present on paid sessions — 100%
+- [x] Click IDs (`gclid`/`fbclid`/`li_fat_id`) captured where channel supports them — 95.3%
 
-### 1) UTM and click-id integrity
-- [ ] All paid destination URLs use approved UTM matrix.
-- [ ] `utm_source`, `utm_medium`, `utm_campaign`, `utm_content` present on paid sessions.
-- [ ] Click IDs (`gclid`/`fbclid`/`li_fat_id`) captured where channel supports them.
-- Pass threshold:
-  - Missing attribution fields on paid sessions < 3%.
+### Remaining QA checks (WHA-19 scope)
+- Check 2: Pixel/CAPI conversion parity — pending evidence
+- Check 3: Funnel event mapping and identity stitching — pending evidence
+- Check 4: Dashboard readiness — pending evidence
+- Check 5: Alerting and incident triggers — pending evidence
 
 ### 2) Pixel/CAPI conversion parity
 - [ ] Browser pixel events fire on all required conversion steps.
@@ -71,12 +73,10 @@ Still required to pass `WHA-21`:
 - Dashboard URL with timestamp proving freshness SLA.
 - Alert routing proof (owner + channel) for anomaly monitors.
 
-## Current blocker
-Execution requires live ad platform, analytics warehouse, and dashboard access that is not available in this local workspace.
-
-## Unblock requests
-- CTO: provide warehouse extracts or dashboard slices for paid sessions with UTMs and click IDs.
-- QA: provide destination URL audit from active paid campaigns (Google/Meta/LinkedIn) for matrix conformance check.
+## WHA-21 unblock status — resolved
+- CTO evidence: Delivered via [WHA-23](/WHA/issues/WHA-23) — warehouse extracts, persistence tests
+- Campaign-side audit: Completed via [WHA-24](/WHA/issues/WHA-24) — 10/10 URLs PASS
+- [WHA-21](/WHA/issues/WHA-21): CLOSED — all UTM and click-id checks PASS
 
 ## Next action owner
 - Technical validation evidence collection: CTO (`d1a3c1e9-6a0b-4189-88dd-76bf3f33f8d4`)
