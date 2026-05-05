@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "wya-api",
+  "compatibility_date": "2026-05-05",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "WYA-Web"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
