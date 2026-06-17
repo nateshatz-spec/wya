@@ -259,6 +259,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = wya;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "WYA needs permission to save your Aura wallpapers to your library.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "WYA uses this to personalize your experience and deliver relevant content.";
 				INFOPLIST_KEY_CFBundleName = wya;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
@@ -297,6 +298,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = wya;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "WYA needs permission to save your Aura wallpapers to your library.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "WYA uses this to personalize your experience and deliver relevant content.";
 				INFOPLIST_KEY_CFBundleName = wya;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";

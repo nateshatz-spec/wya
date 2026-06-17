@@ -1,4 +1,5 @@
 import SwiftUI
+import AppTrackingTransparency
 
 @main
 struct WYA3_0App: App {
@@ -19,6 +20,15 @@ struct WYA3_0App: App {
                 .environmentObject(tabStore)
                 .environmentObject(auth)
                 .environmentObject(subscriptionManager)
+                .onReceive(NotificationCenter.default.publisher(
+                    for: UIApplication.didBecomeActiveNotification)
+                ) { _ in
+                    // ATT prompt must appear after the app's first UI is visible.
+                    // Triggering on didBecomeActive ensures the window is ready.
+                    if ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
+                        ATTManager.shared.requestAuthorization()
+                    }
+                }
         }
     }
 }
