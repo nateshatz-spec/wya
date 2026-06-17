@@ -65,7 +65,7 @@ class ShareManager {
             let activityVC = UIActivityViewController(activityItems: [uiImage], applicationActivities: nil)
             
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let rootVC = windowScene.windows.first?.rootViewController {
+               let rootVC = windowScene.keyWindow?.rootViewController {
                 
                 // For iPad support
                 if let popover = activityVC.popoverPresentationController {
